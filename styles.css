@@ -118,7 +118,7 @@ position: absolute;
 }
 
 .img__logo {
-  margin: 0 38vw 10vh;
+  margin: 0 38vw 4vh;
   /* transform: skewX(-11deg); */
   /* filter: invert(1); */
   width: 170px;
