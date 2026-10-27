@@ -55,23 +55,22 @@ body {
   padding: 0 7vw;
 }
 
-.hero-section__button-box {
-
-}
-
 .hero-section__button {
 position: absolute;
   display: flex;
+  max-width: 100px !important;
+  border: none;
+  border-radius: 9px;
   margin: 5px;
   padding: 10px;
   background: linear-gradient(0deg, transparent, goldenrod);
   opacity: 0.3;
   color: whitesmoke;
   
-  right: 5vw;
-  top: 10vh;
+  /* right: 5vw; */
+  /* top: 10vh; */
   z-index: -1;
-  width: calc(var(--index) * 40);
+  /* width: calc(var(--index) * 40); */
 }
 .hero-section__picture {
   position: absolute;
@@ -85,9 +84,10 @@ position: absolute;
   position: absolute;
   display: flex;
   flex-direction: column;
+  padding: 5px;
   left: 3vw;
   top: 50vh;
-  width: calc(var(--index) * 15);
+  width: 200px;
   z-index: -1;
 }
 
