@@ -57,6 +57,13 @@ body {
 
 .hero-section__button {
 position: absolute;
+  display: flex;
+  margin: 5px;
+  padding: 10px;
+  background: linear-gradient(0deg, transparent, goldenrod);
+  opacity: 0.3;
+  color: whitesmoke;
+  
   right: 5vw;
   top: 10vh;
   z-index: -1;
