@@ -55,6 +55,13 @@ body {
   padding: 0 7vw;
 }
 
+.hero-section__button {
+position: absolute;
+  right: 5vw;
+  top: 10vh;
+  z-index: -1;
+  width: calc(var(--index) * 40);
+}
 .hero-section__picture {
   position: absolute;
   right: 5vw;
