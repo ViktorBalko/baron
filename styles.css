@@ -56,9 +56,9 @@ body {
 }
 
 .hero-section__button {
-position: absolute;
+/* position: absolute; */
   display: flex;
-  max-width: 100px !important;
+  max-width: 220px !important;
   border: none;
   border-radius: 9px;
   margin: 5px;
