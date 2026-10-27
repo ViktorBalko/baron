@@ -117,7 +117,7 @@ position: absolute;
   margin-top: calc(var(--index) * 13);
 }
 
-.img__logo {
+.img__logo-hidden {
       margin: 0 47vw 10vh;
     /* transform: skewX(-11deg); */
     /* filter: invert(1); */
