@@ -55,15 +55,30 @@ body {
   padding: 0 7vw;
 }
 
+.hero-section__button-box{
+  position: absolute;
+  display: grid;
+  height: auto;
+  width: 100%;
+  /* flex-direction: column; */
+  /* flex-wrap: wrap; */
+  gap: 1;
+  padding: 5px;
+  left: 3vw;
+  top: 50vh;
+  /* width: 200px; */
+  z-index: -1;
+}
+
 .hero-section__button {
 /* position: absolute; */
   display: flex;
-  width: 220px !important;
+  /* width: 220px; */
   border: none;
   border-radius: 9px;
   margin: 5px;
   padding: 10px;
-  background: linear-gradient(180deg, black, goldenrod);
+  background: linear-gradient(90deg, black, gray);
   opacity: 0.3;
   color: whitesmoke;
   
@@ -80,18 +95,7 @@ body {
   width: calc(var(--index) * 40);
 }
 
-.hero-section__button-box{
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  
-  padding: 5px;
-  left: 3vw;
-  top: 50vh;
-  /* width: 200px; */
-  z-index: -1;
-}
+
 
 .carousel {
   display: flex;
