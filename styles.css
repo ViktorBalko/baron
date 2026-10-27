@@ -55,6 +55,10 @@ body {
   padding: 0 7vw;
 }
 
+.hero-section__button-box {
+
+}
+
 .hero-section__button {
 position: absolute;
   display: flex;
@@ -77,10 +81,11 @@ position: absolute;
   width: calc(var(--index) * 40);
 }
 
-.hero-section__logo {
+.hero-section__button-box{
   position: absolute;
+  display: flex;
+  flex-direction: column;
   left: 3vw;
-  /* bottom: 35vh; */
   top: 50vh;
   width: calc(var(--index) * 15);
   z-index: -1;
