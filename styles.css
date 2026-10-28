@@ -59,7 +59,7 @@ body {
   position: absolute;
   display: grid;
   height: auto;
-  width: 100%;
+  max-width: 300px !important;
   /* flex-direction: column; */
   /* flex-wrap: wrap; */
   gap: 1;
@@ -89,10 +89,10 @@ body {
 }
 .hero-section__picture {
   position: absolute;
-  left: 2vw;
-  top: 2vh;
+  left: 25px;
+  top: 25px;
   z-index: -1;
-  width: calc(var(--index) * 50);
+  width: calc(var(--index) * 70);
 }
 
 
