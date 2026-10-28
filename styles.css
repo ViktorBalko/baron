@@ -89,10 +89,10 @@ body {
 }
 .hero-section__picture {
   position: absolute;
-  right: 5vw;
-  top: 15vh;
+  left: 2vw;
+  top: 2vh;
   z-index: -1;
-  width: calc(var(--index) * 40);
+  width: calc(var(--index) * 50);
 }
 
 
