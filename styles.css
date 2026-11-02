@@ -9,7 +9,7 @@
   --main-text-color: #fafafa;
   --secondary-text-color: #c2c2c2;
   --main-background-color: #000000;
-  --carousel-gap: clamp(2rem, 5vw, 6rem);
+  --carousel-gap: 3rem;
 }
 
 @font-face {
@@ -33,128 +33,118 @@ body {
   overflow-x: hidden;
 }
 
+/* Перемикання макетів за замовчуванням */
+.mobile-layout {
+  display: none; /* На десктопі сховано */
+}
+.desktop-layout {
+  display: block; /* На десктопі показано */
+}
+
+/* Стилі для десктопної каруселі (як було) */
 .hero-section {
   height: 100vh;
   position: relative;
 }
-
 .hero-header {
   height: 100vh;
 }
-
 .container {
-  padding: 0 clamp(1.5rem, 7vw, 7rem);
+  padding: 0 7vw;
 }
-
 .hero-section__picture {
   position: absolute;
   right: 5vw;
   top: 15vh;
   z-index: -1;
-  width: clamp(280px, 40vw, 600px);
+  width: calc(var(--index) * 40);
 }
-
 .hero-section__logo {
   position: absolute;
   left: 3vw;
   top: 50vh;
-  width: clamp(150px, 15vw, 300px);
+  width: calc(var(--index) * 15);
   z-index: -1;
 }
-
 .carousel {
   display: flex;
-  gap: clamp(2rem, 4vw, 5rem);
   padding: calc(var(--index) * 4) 0;
 }
-
 .carousel > * {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .carousel__text,
 .carousel__image {
-  width: 100%;
-  max-width: clamp(280px, 22vw, 450px);
+  max-width: calc(var(--index) * 22);
   margin-bottom: var(--carousel-gap);
   border-radius: 1em;
 }
-
-.carousel__image {
-  height: auto;
-  object-fit: cover;
-}
-
 .carousel__text-head {
   font-family: outfit-tag, sans-serif;
   color: var(--main-text-color);
-  font-size: clamp(1.5rem, 2vw, 2.2rem);
+  font-size: 2rem;
   padding-bottom: 0.5rem;
 }
-
 .carousel__text-paragraph {
   font-family: relaway-tag, sans-serif;
   color: var(--secondary-text-color);
-  font-size: clamp(1rem, 1.2vw, 1.3rem);
-  line-height: 1.6;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
 }
-
 .carousel__left {
-  margin-top: clamp(5rem, 13vw, 15rem);
+  margin-top: calc(var(--index) * 13);
 }
-
 .img__logo {
   margin: 0 auto 10vh;
   transform: skewX(-11deg);
   filter: invert(1);
-  width: clamp(200px, 30vw, 370px);
+  width: 370px;
   display: block;
 }
 
-/* ==========================================================
-   АДАПТИВНІСТЬ ДЛЯ ПЛАНШЕТІВ ТА МОБІЛЬНИХ
-   ========================================================== */
 
-@media (max-width: 1024px) {
-  .hero-section__picture {
-    width: clamp(250px, 50vw, 450px);
-  }
-}
-
+/* ========================================== */
+/* 📱 СТИЛІ ДЛЯ МОБІЛЬНОЇ ВЕРСІЇ (< 768px)      */
+/* ========================================== */
 @media (max-width: 768px) {
-  .container {
-    padding: 0 5vw;
+  .desktop-layout {
+    display: none !important; /* На мобільному повністю ховаємо десктоп */
+  }
+  .mobile-layout {
+    display: block !important; /* Показуємо мобільну версію */
   }
 
-  /* Повністю збираємо карусель у єдиний вертикальний стовпчик */
-  .carousel {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-    padding: 2rem 0 !important;
-    gap: 2rem !important;
+  .mobile-flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 5vw;
+    gap: 4rem;
+    overflow-x: hidden; /* Щоб уникнути горизонтального скролу під час вильоту з боків */
   }
 
-  /* Скасовуємо поділ на колонки через display: contents */
-  .carousel__left,
-  .carousel__right {
-    display: contents !important;
-    width: 100% !important;
-    margin-top: 0 !important;
+  .mobile-anim-img,
+  .mobile-anim-txt {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 1em;
   }
 
-  /* Кожен елемент стає на всю ширину екрана */
-  .carousel__item,
-  .carousel__text,
-  .carousel__image {
-    max-width: 100% !important;
-    width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    margin-bottom: 2rem !important;
+  .mobile-anim-img {
+    height: auto;
+    object-fit: cover;
+  }
+
+  .mobile-anim-txt .carousel__text-head {
+    font-size: 1.6rem;
+  }
+
+  .mobile-anim-txt .carousel__text-paragraph {
+    font-size: 1.1rem;
+    line-height: 1.6;
   }
 
   .hero-section__picture {
