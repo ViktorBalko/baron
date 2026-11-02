@@ -1,3 +1,4 @@
+
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 // Перевіряємо ширину екрана або тач-пристрій для вибору логіки анімації
