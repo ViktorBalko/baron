@@ -4,7 +4,7 @@ const isMobile = window.innerWidth <= 768 || /Mobi|Android|iPhone/i.test(navigat
 
 if (!isMobile) {
   // ==========================================
-  // 💻 ДЕСКТОП / ПЛАНШЕТ (ОРИГІНАЛЬНИЙ ПАРАЛАКС)
+  // 💻 ДЕСКТОП / ПЛАНШЕТ (Твій оригінальний паралакс з боків)
   // ==========================================
   gsap.registerPlugin(ScrollSmoother);
   ScrollSmoother.create({
@@ -64,71 +64,35 @@ if (!isMobile) {
 
 } else {
   // ==========================================
-  // 📱 МОБІЛЬНИЙ (КАРТИНКИ ЗЛІВА, ТЕКСТИ СПРАВА)
+  // 📱 МОБІЛЬНИЙ (Одна колонка + чистий Opacity-ефект)
   // ==========================================
 
-  // 1. Фото виїжджають із лівого краю в центр, а потім ховаються назад
-  gsap.utils.toArray(".mobile-anim-img").forEach((img) => {
+  // Усі елементи мобільного потоку (і картинки, і тексти) плавно реагують на прозорість
+  gsap.utils.toArray(".mobile-flow > *").forEach((item) => {
     gsap.fromTo(
-      img,
-      { opacity: 0, x: -150 }, // Повністю сховано за лівим краєм
+      item,
+      { opacity: 0.2 }, // Нагорі або внизу елемент напівпрозорий
       {
-        opacity: 1,
-        x: 0,                  // Чітко в центрі екрана
+        opacity: 1,     // У центрі екрана стає повністю видимим
         scrollTrigger: {
-          trigger: img,
-          start: "top 85%",    // Починає виїжджати знизу
-          end: "center center",// Доходить до центру і стає повністю видимим
-          scrub: true,         // Прив'язано до руху пальця (дихає разом зі скролом у обидва боки)
+          trigger: item,
+          start: "top 85%",      // Коли елемент знизу з'являється в полі зору
+          end: "center center",  // Доходить до центру екрана — максимальна видимість
+          scrub: true,           // Плавне слідування за пальцем у обидва боки
         }
       }
     );
 
-    // Додатковий тригер для зникнення вгору
+    // Зворотне згасання, коли елемент іде вгору екрана
     gsap.fromTo(
-      img,
-      { opacity: 1, x: 0 },
+      item,
+      { opacity: 1 },
       {
-        opacity: 0,
-        x: -150,               // Ховається за лівий край при русі вгору
+        opacity: 0.2,
         scrollTrigger: {
-          trigger: img,
+          trigger: item,
           start: "center center",
-          end: "top 10%",
-          scrub: true,
-        }
-      }
-    );
-  });
-
-  // 2. Тексти виїжджають із правого краю в центр, а потім ховаються назад
-  gsap.utils.toArray(".mobile-anim-txt").forEach((txt) => {
-    gsap.fromTo(
-      txt,
-      { opacity: 0, x: 150 },  // Повністю сховано за правим краєм
-      {
-        opacity: 1,
-        x: 0,                  // Чітко в центрі екрана
-        scrollTrigger: {
-          trigger: txt,
-          start: "top 85%",
-          end: "center center",
-          scrub: true,
-        }
-      }
-    );
-
-    // Зникнення вгору праворуч
-    gsap.fromTo(
-      txt,
-      { opacity: 1, x: 0 },
-      {
-        opacity: 0,
-        x: 150,
-        scrollTrigger: {
-          trigger: txt,
-          start: "center center",
-          end: "top 10%",
+          end: "top 15%",      // Коли піднімається вище центру — знову м'яко темніє/згасає
           scrub: true,
         }
       }
