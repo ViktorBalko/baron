@@ -64,36 +64,36 @@ if (!isMobile) {
 
 } else {
   // ==========================================
-  // 📱 МОБІЛЬНИЙ (Плавне згасання лише у перших та останніх 10% екрана)
+  // 📱 МОБІЛЬНИЙ (Зона прозорості у верхніх та нижніх 25%)
   // ==========================================
 
   gsap.utils.toArray(".mobile-flow > *").forEach((item) => {
-    // 1. Поява знизу: коли елемент заходить у нижні 10% екрана (start: "top 90%")
+    // 1. Поява з нижніх 25% екрана
     gsap.fromTo(
       item,
       { opacity: 0.2 },
       {
         opacity: 1,
-        duration: 0.4,
+        duration: 0.5,
         scrollTrigger: {
           trigger: item,
-          start: "top 90%", // Спрацьовує, коли верх елемента досягає 90% висоти в'юпорта
-          toggleActions: "play reverse play reverse", // Працює і вгору, і вниз
+          start: "top 75%", // Починає світлішати, коли доходить до нижньої чверті (25% знизу / 75% від верху)
+          toggleActions: "play reverse play reverse",
         }
       }
     );
 
-    // 2. Зникнення зверху: коли елемент доходить до верхніх 10% екрана
+    // 2. Затемнення у верхніх 25% екрана
     gsap.fromTo(
       item,
       { opacity: 1 },
       {
         opacity: 0.2,
-        duration: 0.4,
+        duration: 0.5,
         scrollTrigger: {
           trigger: item,
-          start: "top 10%", // Спрацьовує, коли верх елемента підіймається до 10% в'юпорта
-          end: "bottom 10%",
+          start: "top 25%", // Починає темніти, коли підіймається у верхню чверть екрана
+          end: "bottom 25%",
           toggleActions: "play reverse play reverse",
         }
       }
