@@ -1,10 +1,9 @@
 gsap.registerPlugin(ScrollTrigger);
 
-// Перевіряємо, чи це мобільний пристрій або вузький екран
 const isMobile = window.innerWidth <= 768 || /Mobi|Android|iPhone/i.test(navigator.userAgent);
 
 if (!isMobile) {
-  // ДЕСКТОП: Твій улюблений плавний паралакс з боків
+  // ДЕСКТОП: Твій оригінальний паралакс
   gsap.registerPlugin(ScrollSmoother);
   ScrollSmoother.create({
     wrapper: ".wrapper",
@@ -62,22 +61,50 @@ if (!isMobile) {
   });
 
 } else {
-  // МОБІЛЬНИЙ (Сафарі / iPhone): Плавне виринання знизу (fade-up) єдиним красивим потоком
-  gsap.utils.toArray(".carousel__item, .hero-section").forEach((item) => {
+  // МОБІЛЬНИЙ: Картинки вилітають зліва, тексти — справа, і все йде в одну колонку
+  
+  // 1. Усі картинки летять зліва
+  gsap.utils.toArray(".carousel__image").forEach((img) => {
     gsap.fromTo(
-      item,
-      { opacity: 0, y: 30 },
+      img,
+      { opacity: 0, x: -80 },
       {
         opacity: 1,
-        y: 0,
+        x: 0,
         duration: 0.8,
         ease: "power2.out",
         scrollTrigger: {
-          trigger: item,
-          start: "top 92%",
+          trigger: img,
+          start: "top 88%",
           toggleActions: "play none none none"
         }
       }
     );
   });
+
+  // 2. Усі текстові блоки летять справа
+  gsap.utils.toArray(".carousel__text").forEach((txt) => {
+    gsap.fromTo(
+      txt,
+      { opacity: 0, x: 80 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: txt,
+          start: "top 88%",
+          toggleActions: "play none none none"
+        }
+      }
+    );
+  });
+
+  // Hero секція на мобільному
+  gsap.fromTo(
+    ".hero-section",
+    { opacity: 0 },
+    { opacity: 1, duration: 1 }
+  );
 }
