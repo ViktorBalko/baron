@@ -14,12 +14,12 @@
 
 @font-face {
   font-family: relaway-tag;
-  src: url('fonts/raleway-regular.woff2');
+  src: url('raleway-regular.woff2');
 }
 
 @font-face {
   font-family: outfit-tag;
-  src: url('fonts/outfit-regular.woff2');
+  src: url('outfit-regular.woff2');
 }
 
 html {
@@ -33,15 +33,15 @@ body {
   overflow-x: hidden;
 }
 
-/* Перемикання макетів за замовчуванням */
+/* Перемикання версій */
 .mobile-layout {
-  display: none; /* На десктопі сховано */
+  display: none;
 }
 .desktop-layout {
-  display: block; /* На десктопі показано */
+  display: block;
 }
 
-/* Стилі для десктопної каруселі (як було) */
+/* Десктопні стилі */
 .hero-section {
   height: 100vh;
   position: relative;
@@ -105,16 +105,13 @@ body {
   display: block;
 }
 
-
-/* ========================================== */
-/* 📱 СТИЛІ ДЛЯ МОБІЛЬНОЇ ВЕРСІЇ (< 768px)      */
-/* ========================================== */
+/* Мобільні стилі (< 768px) */
 @media (max-width: 768px) {
   .desktop-layout {
-    display: none !important; /* На мобільному повністю ховаємо десктоп */
+    display: none !important;
   }
   .mobile-layout {
-    display: block !important; /* Показуємо мобільну версію */
+    display: block !important;
   }
 
   .mobile-flow {
@@ -123,7 +120,7 @@ body {
     align-items: center;
     padding: 2rem 5vw;
     gap: 4rem;
-    overflow-x: hidden; /* Щоб уникнути горизонтального скролу під час вильоту з боків */
+    overflow-x: hidden;
   }
 
   .mobile-anim-img,
