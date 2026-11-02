@@ -118,43 +118,44 @@ body {
 @media (max-width: 768px) {
   body {
     position: relative;
+    background-color: #000000;
   }
 
-  /* Верхня плашка під адресну строку Сафарі */
+  /* АБСОЛЮТНО НЕПРОЗОРА чорна шапка зверху під адресну строку Safari */
   body::before {
     content: '';
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 12vh;
-    background: #000000; /* Суцільний чорний колір без прозорих хвостів */
+    height: 130px;
+    background-color: #000000 !important;
     pointer-events: none;
-    z-index: 1000;
+    z-index: 99999;
   }
 
-  /* Нижня плашка під панель навігації Сафарі */
+  /* АБСОЛЮТНО НЕПРОЗОРИЙ чорний блок знизу під панель навігації Safari */
   body::after {
     content: '';
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 12vh;
-    background: #000000; /* Суцільний чорний колір */
+    height: 130px;
+    background-color: #000000 !important;
     pointer-events: none;
-    z-index: 1000;
+    z-index: 99999;
   }
 
   .container {
     padding: 0 5vw;
   }
 
-  /* Вишиковуємо карусель в одну колонку з відступом, щоб контент не ховався під плашки */
+  /* Вишиковуємо карусель в одну колонку з безпечними відступами */
   .carousel {
     display: flex !important;
     flex-direction: column !important;
-    padding: 14vh 0 !important;
+    padding: 140px 0 140px 0 !important;
     gap: 3rem !important;
   }
 
@@ -169,11 +170,15 @@ body {
     width: 100% !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
-    margin-bottom: 3rem !important;
+    margin-bottom: 2rem !important;
   }
 
   .carousel__left {
     margin-top: 0 !important;
+  }
+
+  .hero-section {
+    padding-top: 40px;
   }
 
   .hero-section__picture {
@@ -192,5 +197,6 @@ body {
   .img__logo {
     width: 80vw;
     max-width: 370px;
+    margin-bottom: 140px;
   }
 }
