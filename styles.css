@@ -9,7 +9,7 @@
   --main-text-color: #fafafa;
   --secondary-text-color: #c2c2c2;
   --main-background-color: #000000;
-  --carousel-gap: 3rem;
+  --carousel-gap: calc(var(--index) * 5);
 }
 
 @font-face {
@@ -33,25 +33,19 @@ body {
   overflow-x: hidden;
 }
 
-/* Перемикання версій */
-.mobile-layout {
-  display: none;
-}
-.desktop-layout {
-  display: block;
-}
-
-/* Десктопні стилі */
 .hero-section {
   height: 100vh;
   position: relative;
 }
+
 .hero-header {
   height: 100vh;
 }
+
 .container {
   padding: 0 7vw;
 }
+
 .hero-section__picture {
   position: absolute;
   right: 5vw;
@@ -59,6 +53,7 @@ body {
   z-index: -1;
   width: calc(var(--index) * 40);
 }
+
 .hero-section__logo {
   position: absolute;
   left: 3vw;
@@ -66,37 +61,49 @@ body {
   width: calc(var(--index) * 15);
   z-index: -1;
 }
+
 .carousel {
   display: flex;
   padding: calc(var(--index) * 4) 0;
 }
+
 .carousel > * {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .carousel__text,
 .carousel__image {
   max-width: calc(var(--index) * 22);
   margin-bottom: var(--carousel-gap);
   border-radius: 1em;
 }
+
+.carousel__image {
+  height: auto;
+  object-fit: cover;
+}
+
 .carousel__text-head {
   font-family: outfit-tag, sans-serif;
   color: var(--main-text-color);
   font-size: 2rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: calc(var(--index) * 0.5);
 }
+
 .carousel__text-paragraph {
   font-family: relaway-tag, sans-serif;
   color: var(--secondary-text-color);
   font-size: 1.3rem;
   line-height: 1.8rem;
 }
+
 .carousel__left {
   margin-top: calc(var(--index) * 13);
 }
+
 .img__logo {
   margin: 0 auto 10vh;
   transform: skewX(-11deg);
@@ -106,70 +113,67 @@ body {
 }
 
 /* ========================================== */
-/* 📱 Мобільні стилі (< 768px)                  */
+/* АДАПТИВНІСТЬ ДЛЯ МОБІЛЬНИХ ПРИСТРОЇВ       */
 /* ========================================== */
 @media (max-width: 768px) {
-  .desktop-layout {
-    display: none !important;
-  }
-  .mobile-layout {
-    display: block !important;
+  body {
     position: relative;
   }
 
-  /* Кінематографічні градієнтні маски зверху і знизу екрана */
-  .mobile-layout::before {
+  /* Абсолютно непрозора зона зверху (ховає текст під строкою Safari) */
+  body::before {
     content: '';
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 22vh; /* Верхні 22% екрана */
-    background: linear-gradient(to bottom, #000000 0%, rgba(0,0,0,0) 100%);
+    height: 18vh;
+    background: linear-gradient(to bottom, #000000 0%, #000000 50%, rgba(0,0,0,0) 100%);
     pointer-events: none;
-    z-index: 100;
+    z-index: 1000;
   }
 
-  .mobile-layout::after {
+  /* Абсолютно непрозора зона знизу (ховає контент під нижньою панеллю) */
+  body::after {
     content: '';
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 22vh; /* Нижні 22% екрана */
-    background: linear-gradient(to top, #000000 0%, rgba(0,0,0,0) 100%);
+    height: 18vh;
+    background: linear-gradient(to top, #000000 0%, #000000 50%, rgba(0,0,0,0) 100%);
     pointer-events: none;
-    z-index: 100;
+    z-index: 1000;
   }
 
-  .mobile-flow {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 3rem 6vw;
-    gap: 4rem;
-    overflow-x: hidden;
+  .container {
+    padding: 0 5vw;
   }
 
-  .mobile-anim-img,
-  .mobile-anim-txt {
-    width: 100%;
-    max-width: 400px;
-    border-radius: 1em;
+  /* Примусово вишиковуємо всю карусель в ОДНУ колонку */
+  .carousel {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 12vh 0 !important;
+    gap: 3rem !important;
   }
 
-  .mobile-anim-img {
-    height: auto;
-    object-fit: cover;
+  .carousel__left,
+  .carousel__right {
+    display: contents !important;
   }
 
-  .mobile-anim-txt .carousel__text-head {
-    font-size: 1.6rem;
+  .carousel__text,
+  .carousel__image {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 3rem !important;
   }
 
-  .mobile-anim-txt .carousel__text-paragraph {
-    font-size: 1.1rem;
-    line-height: 1.6;
+  .carousel__left {
+    margin-top: 0 !important;
   }
 
   .hero-section__picture {
@@ -186,7 +190,7 @@ body {
   }
 
   .img__logo {
-    width: 70vw;
+    width: 80vw;
     max-width: 370px;
   }
 }
