@@ -1,6 +1,10 @@
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-if (ScrollTrigger.isTouch !== 1) {
+// Перевіряємо ширину екрана або тач-пристрій для вибору логіки анімації
+const isMobile = window.innerWidth <= 768 || ScrollTrigger.isTouch === 1;
+
+if (!isMobile) {
+  // ДЕСКТОП: Плавний скролл + з'їжджання з боків
   ScrollSmoother.create({
     wrapper: ".wrapper",
     content: ".content",
@@ -23,7 +27,6 @@ if (ScrollTrigger.isTouch !== 1) {
   );
 
   let itemsLeft = gsap.utils.toArray(".carousel__left .carousel__item");
-
   itemsLeft.forEach((item) => {
     gsap.fromTo(
       item,
@@ -42,7 +45,6 @@ if (ScrollTrigger.isTouch !== 1) {
   });
 
   let itemsRight = gsap.utils.toArray(".carousel__right .carousel__item");
-
   itemsRight.forEach((item) => {
     gsap.fromTo(
       item,
@@ -55,6 +57,27 @@ if (ScrollTrigger.isTouch !== 1) {
           start: "-900",
           end: "top",
           scrub: true
+        }
+      }
+    );
+  });
+
+} else {
+  // МОБІЛЬНИЙ АДАПТИВ: Красива анімація виринання знизу (один під одним)
+  let allItems = gsap.utils.toArray(".carousel__item");
+  allItems.forEach((item) => {
+    gsap.fromTo(
+      item,
+      { opacity: 0, y: 50 }, // Початковий стан: трохи знизу і прозорі
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: item,
+          start: "top 85%", // Спрацьовує, коли елемент з'являється знизу екрана
+          toggleActions: "play none none reverse"
         }
       }
     );
