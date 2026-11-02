@@ -1,10 +1,11 @@
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+gsap.registerPlugin(ScrollTrigger);
 
-// Перевіряємо ширину екрана (якщо менше 768px — мобільна версія)
-const isMobile = window.innerWidth <= 768;
+// Перевіряємо, чи це мобільний пристрій або вузький екран
+const isMobile = window.innerWidth <= 768 || /Mobi|Android|iPhone/i.test(navigator.userAgent);
 
 if (!isMobile) {
-  // ДЕСКТОП: Плавний скролл + паралакс з боків
+  // ДЕСКТОП: Твій улюблений плавний паралакс з боків
+  gsap.registerPlugin(ScrollSmoother);
   ScrollSmoother.create({
     wrapper: ".wrapper",
     content: ".content",
@@ -61,18 +62,19 @@ if (!isMobile) {
   });
 
 } else {
-  // МОБІЛЬНИЙ: Плавне виринання знизу (fade-up) один за одним
+  // МОБІЛЬНИЙ (Сафарі / iPhone): Плавне виринання знизу (fade-up) єдиним красивим потоком
   gsap.utils.toArray(".carousel__item, .hero-section").forEach((item) => {
     gsap.fromTo(
       item,
-      { opacity: 0, y: 40 },
+      { opacity: 0, y: 30 },
       {
         opacity: 1,
         y: 0,
         duration: 0.8,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: item,
-          start: "top 90%",
+          start: "top 92%",
           toggleActions: "play none none none"
         }
       }
