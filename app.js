@@ -3,9 +3,7 @@ gsap.registerPlugin(ScrollTrigger);
 const isMobile = window.innerWidth <= 768 || /Mobi|Android|iPhone/i.test(navigator.userAgent);
 
 if (!isMobile) {
-  // ==========================================
-  // 💻 ДЕСКТОП / ПЛАНШЕТ (Твій паралакс)
-  // ==========================================
+  // ДЕСКТОП: Твій плавний паралакс із виїздом колонок з боків
   gsap.registerPlugin(ScrollSmoother);
   ScrollSmoother.create({
     wrapper: ".wrapper",
@@ -15,12 +13,12 @@ if (!isMobile) {
   });
 
   gsap.fromTo(
-    ".desktop-layout .hero-section",
+    ".hero-section",
     { opacity: 1 },
     {
       opacity: 0,
       scrollTrigger: {
-        trigger: ".desktop-layout .hero-section",
+        trigger: ".hero-section",
         start: "center",
         end: "750",
         scrub: true
@@ -28,7 +26,7 @@ if (!isMobile) {
     }
   );
 
-  gsap.utils.toArray(".desktop-layout .carousel__left .carousel__item").forEach((item) => {
+  gsap.utils.toArray(".carousel__left .carousel__item").forEach((item) => {
     gsap.fromTo(
       item,
       { opacity: 0, x: -120 },
@@ -45,7 +43,7 @@ if (!isMobile) {
     );
   });
 
-  gsap.utils.toArray(".desktop-layout .carousel__right .carousel__item").forEach((item) => {
+  gsap.utils.toArray(".carousel__right .carousel__item").forEach((item) => {
     gsap.fromTo(
       item,
       { opacity: 0, x: 130 },
@@ -61,10 +59,6 @@ if (!isMobile) {
       }
     );
   });
-
 } else {
-  // ==========================================
-  // 📱 МОБІЛЬНИЙ (Чистий скрол + градієнтні маски, 0 навантаження)
-  // ==========================================
-  // Жодного JS-код тут не потрібно, бо градієнти працюють на чистому CSS і дають ідеальну плавність!
+  // МОБІЛЬНИЙ: Повністю стабільний чистий скрол (анімації та роботу з візуалом беруть на себе CSS-градієнти)
 }
