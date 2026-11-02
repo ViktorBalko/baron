@@ -3,7 +3,7 @@ gsap.registerPlugin(ScrollTrigger);
 const isMobile = window.innerWidth <= 768 || /Mobi|Android|iPhone/i.test(navigator.userAgent);
 
 if (!isMobile) {
-  // ДЕСКТОП: Твій оригінальний паралакс
+  // ДЕСКТОП: Твій оригінальний плавний паралакс
   gsap.registerPlugin(ScrollSmoother);
   ScrollSmoother.create({
     wrapper: ".wrapper",
@@ -61,13 +61,13 @@ if (!isMobile) {
   });
 
 } else {
-  // МОБІЛЬНИЙ: Картинки вилітають зліва, тексти — справа, і все йде в одну колонку
-  
-  // 1. Усі картинки летять зліва
+  // МОБІЛЬНИЙ: В одну колонку, картинки зліва, тексти справа + ЗВОРОТНА АНІМАЦІЯ
+
+  // 1. Картинки вилітають зліва
   gsap.utils.toArray(".carousel__image").forEach((img) => {
     gsap.fromTo(
       img,
-      { opacity: 0, x: -80 },
+      { opacity: 0, x: -100 },
       {
         opacity: 1,
         x: 0,
@@ -75,18 +75,19 @@ if (!isMobile) {
         ease: "power2.out",
         scrollTrigger: {
           trigger: img,
-          start: "top 88%",
-          toggleActions: "play none none none"
+          start: "top 85%",
+          // Зворотна анімація: коли скролиш назад (вгору), елемент знову ховається
+          toggleActions: "play reverse play reverse"
         }
       }
     );
   });
 
-  // 2. Усі текстові блоки летять справа
+  // 2. Текстові блоки вилітають справа
   gsap.utils.toArray(".carousel__text").forEach((txt) => {
     gsap.fromTo(
       txt,
-      { opacity: 0, x: 80 },
+      { opacity: 0, x: 100 },
       {
         opacity: 1,
         x: 0,
@@ -94,17 +95,11 @@ if (!isMobile) {
         ease: "power2.out",
         scrollTrigger: {
           trigger: txt,
-          start: "top 88%",
-          toggleActions: "play none none none"
+          start: "top 85%",
+          // Зворотна анімація тут теж працює
+          toggleActions: "play reverse play reverse"
         }
       }
     );
   });
-
-  // Hero секція на мобільному
-  gsap.fromTo(
-    ".hero-section",
-    { opacity: 0 },
-    { opacity: 1, duration: 1 }
-  );
 }
