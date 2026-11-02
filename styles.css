@@ -120,28 +120,28 @@ body {
     position: relative;
   }
 
-  /* Абсолютно непрозора зона зверху (ховає текст під строкою Safari) */
+  /* Верхня плашка під адресну строку Сафарі */
   body::before {
     content: '';
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 18vh;
-    background: linear-gradient(to bottom, #000000 0%, #000000 50%, rgba(0,0,0,0) 100%);
+    height: 12vh;
+    background: #000000; /* Суцільний чорний колір без прозорих хвостів */
     pointer-events: none;
     z-index: 1000;
   }
 
-  /* Абсолютно непрозора зона знизу (ховає контент під нижньою панеллю) */
+  /* Нижня плашка під панель навігації Сафарі */
   body::after {
     content: '';
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 18vh;
-    background: linear-gradient(to top, #000000 0%, #000000 50%, rgba(0,0,0,0) 100%);
+    height: 12vh;
+    background: #000000; /* Суцільний чорний колір */
     pointer-events: none;
     z-index: 1000;
   }
@@ -150,11 +150,11 @@ body {
     padding: 0 5vw;
   }
 
-  /* Примусово вишиковуємо всю карусель в ОДНУ колонку */
+  /* Вишиковуємо карусель в одну колонку з відступом, щоб контент не ховався під плашки */
   .carousel {
     display: flex !important;
     flex-direction: column !important;
-    padding: 12vh 0 !important;
+    padding: 14vh 0 !important;
     gap: 3rem !important;
   }
 
