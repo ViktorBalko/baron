@@ -116,54 +116,37 @@ body {
 /* АДАПТИВНІСТЬ ДЛЯ МОБІЛЬНИХ ПРИСТРОЇВ       */
 /* ========================================== */
 @media (max-width: 768px) {
+  /* Повністю чорний фон на рівні сторінки, щоб Safari брав його для своїх плашок */
   html, body {
     width: 100%;
     min-height: 100vh;
-    background-color: #000000;
+    background-color: #000000 !important;
     overflow-x: hidden;
-    overflow-y: auto; /* Повноцінний нативний скрол без віконець */
+    overflow-y: auto;
+  }
+
+  /* ЖОДНИХ fixed-псевдоелементів, які ріжуть контент! */
+  body::before,
+  body::after {
+    display: none !important;
   }
 
   .wrapper, .content {
     width: 100%;
     height: auto;
     overflow: visible;
-  }
-
-  /* Тонкі захисні краї-градієнти зверху і знизу для панелей Safari */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    background: linear-gradient(to bottom, #000000 60%, rgba(0, 0, 0, 0) 100%);
-    z-index: 99999;
-    pointer-events: none;
-  }
-
-  body::after {
-    content: '';
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    background: linear-gradient(to top, #000000 60%, rgba(0, 0, 0, 0) 100%);
-    z-index: 99999;
-    pointer-events: none;
+    background-color: #000000;
   }
 
   .container {
-    padding: 0 4vw;
+    padding: 0 5vw;
   }
 
-  /* Повна ширина сайту без будь-яких обмежень у центрі */
+  /* Повнорозмірна видимість каруселі в одну колонку */
   .carousel {
     display: flex !important;
     flex-direction: column !important;
-    padding: 20px 0 !important;
+    padding: 30px 0 !important;
     gap: 3rem !important;
   }
 
@@ -186,26 +169,26 @@ body {
   }
 
   .hero-section {
-    padding-top: 10px;
+    padding-top: 20px;
     height: auto;
   }
 
   .hero-section__picture {
-    width: 90vw;
-    right: 5vw;
-    top: 20vh;
+    width: 85vw;
+    right: 7.5vw;
+    top: 25vh;
     opacity: 0.85;
   }
 
   .hero-section__logo {
     left: 5vw;
-    top: 12vh;
-    width: 70vw;
+    top: 15vh;
+    width: 60vw;
   }
 
   .img__logo {
     width: 80vw;
     max-width: 370px;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
   }
 }
