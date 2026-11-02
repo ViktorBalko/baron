@@ -116,7 +116,6 @@ body {
 /* АДАПТИВНІСТЬ ДЛЯ МОБІЛЬНИХ ПРИСТРОЇВ       */
 /* ========================================== */
 @media (max-width: 768px) {
-  /* Повністю чорний фон на рівні сторінки, щоб Safari брав його для своїх плашок */
   html, body {
     width: 100%;
     min-height: 100vh;
@@ -125,7 +124,7 @@ body {
     overflow-y: auto;
   }
 
-  /* ЖОДНИХ fixed-псевдоелементів, які ріжуть контент! */
+  /* Повертаємо повноцінну видимість без зайвих блокувань */
   body::before,
   body::after {
     display: none !important;
@@ -135,18 +134,46 @@ body {
     width: 100%;
     height: auto;
     overflow: visible;
-    background-color: #000000;
   }
 
   .container {
     padding: 0 5vw;
   }
 
-  /* Повнорозмірна видимість каруселі в одну колонку */
+  /* Основна секція (де сова та логотип) знову на місці та адаптована */
+  .hero-section {
+    height: 100vh;
+    position: relative;
+    display: block !important;
+  }
+
+  .hero-header {
+    height: 100vh;
+    position: relative;
+  }
+
+  .hero-section__picture {
+    position: absolute !important;
+    width: 80vw !important;
+    right: 10vw !important;
+    top: 20vh !important;
+    z-index: 1 !important;
+    opacity: 0.9;
+  }
+
+  .hero-section__logo {
+    position: absolute !important;
+    left: 8vw !important;
+    top: 12vh !important;
+    width: 50vw !important;
+    z-index: 2 !important;
+  }
+
+  /* Карусель йде одразу після героїчної секції */
   .carousel {
     display: flex !important;
     flex-direction: column !important;
-    padding: 30px 0 !important;
+    padding: 40px 0 80px 0 !important;
     gap: 3rem !important;
   }
 
@@ -168,27 +195,31 @@ body {
     margin-top: 0 !important;
   }
 
-  .hero-section {
-    padding-top: 20px;
-    height: auto;
-  }
-
-  .hero-section__picture {
-    width: 85vw;
-    right: 7.5vw;
-    top: 25vh;
-    opacity: 0.85;
-  }
-
-  .hero-section__logo {
-    left: 5vw;
-    top: 15vh;
-    width: 60vw;
-  }
-
   .img__logo {
     width: 80vw;
     max-width: 370px;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
+  }
+
+  /* 
+    ЕЛЕГАНТНИЙ ЕФЕКТ ТІНІ (МАСКИ) ДЛЯ КОНТЕНТУ ЗВЕРХУ І ЗНИЗУ:
+    Накладуємо градієнтні маски безпосередньо на область скролу сторінки, 
+    щоб текст і фото плавно розчинялися в тіні, наближаючись до панелей Safari.
+  */
+  body {
+    -webkit-mask-image: linear-gradient(
+      to bottom, 
+      transparent 0%, 
+      black 12vh, 
+      black 88vh, 
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom, 
+      transparent 0%, 
+      black 12vh, 
+      black 88vh, 
+      transparent 100%
+    );
   }
 }
