@@ -1,11 +1,10 @@
-
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-// Перевіряємо ширину екрана або тач-пристрій для вибору логіки анімації
-const isMobile = window.innerWidth <= 768 || ScrollTrigger.isTouch === 1;
+// Перевіряємо ширину екрана (якщо менше 768px — мобільна версія)
+const isMobile = window.innerWidth <= 768;
 
 if (!isMobile) {
-  // ДЕСКТОП: Плавний скролл + з'їжджання з боків
+  // ДЕСКТОП: Плавний скролл + паралакс з боків
   ScrollSmoother.create({
     wrapper: ".wrapper",
     content: ".content",
@@ -27,8 +26,7 @@ if (!isMobile) {
     }
   );
 
-  let itemsLeft = gsap.utils.toArray(".carousel__left .carousel__item");
-  itemsLeft.forEach((item) => {
+  gsap.utils.toArray(".carousel__left .carousel__item").forEach((item) => {
     gsap.fromTo(
       item,
       { opacity: 0, x: -120 },
@@ -45,8 +43,7 @@ if (!isMobile) {
     );
   });
 
-  let itemsRight = gsap.utils.toArray(".carousel__right .carousel__item");
-  itemsRight.forEach((item) => {
+  gsap.utils.toArray(".carousel__right .carousel__item").forEach((item) => {
     gsap.fromTo(
       item,
       { opacity: 0, x: 130 },
@@ -64,21 +61,19 @@ if (!isMobile) {
   });
 
 } else {
-  // МОБІЛЬНИЙ АДАПТИВ: Красива анімація виринання знизу (один під одним)
-  let allItems = gsap.utils.toArray(".carousel__item");
-  allItems.forEach((item) => {
+  // МОБІЛЬНИЙ: Плавне виринання знизу (fade-up) один за одним
+  gsap.utils.toArray(".carousel__item, .hero-section").forEach((item) => {
     gsap.fromTo(
       item,
-      { opacity: 0, y: 50 }, // Початковий стан: трохи знизу і прозорі
+      { opacity: 0, y: 40 },
       {
         opacity: 1,
         y: 0,
-        duration: 1,
-        ease: "power2.out",
+        duration: 0.8,
         scrollTrigger: {
           trigger: item,
-          start: "top 85%", // Спрацьовує, коли елемент з'являється знизу екрана
-          toggleActions: "play none none reverse"
+          start: "top 90%",
+          toggleActions: "play none none none"
         }
       }
     );
