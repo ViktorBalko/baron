@@ -64,39 +64,7 @@ if (!isMobile) {
 
 } else {
   // ==========================================
-  // 📱 МОБІЛЬНИЙ (Зона прозорості у верхніх та нижніх 25%)
+  // 📱 МОБІЛЬНИЙ (Чистий скрол + градієнтні маски, 0 навантаження)
   // ==========================================
-
-  gsap.utils.toArray(".mobile-flow > *").forEach((item) => {
-    // 1. Поява з нижніх 25% екрана
-    gsap.fromTo(
-      item,
-      { opacity: 0.2 },
-      {
-        opacity: 1,
-        duration: 0.5,
-        scrollTrigger: {
-          trigger: item,
-          start: "top 75%", // Починає світлішати, коли доходить до нижньої чверті (25% знизу / 75% від верху)
-          toggleActions: "play reverse play reverse",
-        }
-      }
-    );
-
-    // 2. Затемнення у верхніх 25% екрана
-    gsap.fromTo(
-      item,
-      { opacity: 1 },
-      {
-        opacity: 0.2,
-        duration: 0.5,
-        scrollTrigger: {
-          trigger: item,
-          start: "top 25%", // Починає темніти, коли підіймається у верхню чверть екрана
-          end: "bottom 25%",
-          toggleActions: "play reverse play reverse",
-        }
-      }
-    );
-  });
+  // Жодного JS-код тут не потрібно, бо градієнти працюють на чистому CSS і дають ідеальну плавність!
 }
