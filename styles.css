@@ -232,7 +232,6 @@ body {
     background: radial-gradient(circle at center, #111 0%, #000 70%);
   } */
 
-
 * {
   margin: 0;
   padding: 0;
@@ -348,7 +347,7 @@ body {
 }
 
 /* ========================================== */
-/* МОБІЛЬНІ (ДО 768px): НА ВСЮ ШИРИНУ, БЕЗ РАДІУСІВ */
+/* МОБІЛЬНІ (ДО 768px): ПОВНА ШИРИНА, БЕЗ РАДІУСІВ */
 /* ========================================== */
 @media (max-width: 768px) {
   html, body {
@@ -405,7 +404,6 @@ body {
     z-index: 2 !important;
   }
 
-  /* Перетворюємо карусель на вертикальний потік на повну ширину */
   .carousel {
     display: flex !important;
     flex-direction: column !important;
@@ -418,7 +416,7 @@ body {
     display: contents !important;
   }
 
-  /* Жодних заокруглень, повна ширина екрана */
+  /* Повна ширина без радіусів */
   .carousel__text,
   .carousel__image {
     max-width: 100% !important;
@@ -435,7 +433,7 @@ body {
 
   .carousel__text {
     background: #080808 !important;
-    padding: 32px 6vw !important;
+    padding: 36px 6vw !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
@@ -461,15 +459,27 @@ body {
     margin: 60px auto;
   }
 
-  /* Класи для мобільної апаратної анімації через requestAnimationFrame / transform3d */
-  .mobile-fade-element {
+  /* --- АППАРАТНІ АНІМАЦІЇ ВИРИНАННЯ З БОКІВ ДЛЯ МОБІЛОК --- */
+  
+  /* Фотографії: початковий стан — зміщені ВЛІВО */
+  .mobile-slide-left {
     opacity: 0;
-    transform: translate3d(0, 40px, 0);
+    transform: translate3d(-100px, 0, 0);
     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
   }
 
-  .mobile-fade-element.is-visible {
+  /* Текст: початковий стан — зміщений ВПРАВО */
+  .mobile-slide-right {
+    opacity: 0;
+    transform: translate3d(100px, 0, 0);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  /* Загальний клас коли елемент стає видимим */
+  .mobile-slide-left.is-visible,
+  .mobile-slide-right.is-visible {
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }
