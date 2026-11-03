@@ -3,7 +3,7 @@ gsap.registerPlugin(ScrollTrigger);
 const isMobile = window.innerWidth <= 768 || /Mobi|Android|iPhone/i.test(navigator.userAgent);
 
 if (!isMobile) {
-  // ДЕСКТОП ТА ПЛАНШЕТ: Еталонний паралакс (два боки) + ScrollSmoother
+  // ДЕСКТОП ТА ПЛАНШЕТ: Еталонний паралакс + ScrollSmoother
   gsap.registerPlugin(ScrollSmoother);
   ScrollSmoother.create({
     wrapper: ".wrapper",
@@ -60,7 +60,7 @@ if (!isMobile) {
     );
   });
 } else {
-  // МОБІЛЬНИЙ РУШІЙ (< 768px): Шахматне висунення + поява рядків при скролі (прямий і зворотний)
+  // МОБІЛЬНИЙ РУШІЙ (< 768px): Шахматне висунення пірамідки + поява рядків
   document.addEventListener("DOMContentLoaded", () => {
     const observerOptions = {
       root: null,
