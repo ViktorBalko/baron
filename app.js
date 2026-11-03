@@ -3,7 +3,7 @@ gsap.registerPlugin(ScrollTrigger);
 const isMobile = window.innerWidth <= 768 || /Mobi|Android|iPhone/i.test(navigator.userAgent);
 
 if (!isMobile) {
-  // ДЕСКТОП ТА ПЛАНШЕТ: Еталонний паралакс + ScrollSmoother
+  // ДЕСКТОП ТА ПЛАНШЕТ: Еталонний двоколонковий паралакс
   gsap.registerPlugin(ScrollSmoother);
   ScrollSmoother.create({
     wrapper: ".wrapper",
@@ -60,7 +60,7 @@ if (!isMobile) {
     );
   });
 } else {
-  // МОБІЛЬНИЙ РУШІЙ (< 768px): Шахматні пари з боків + поява рядків тексту при скролі
+  // МОБІЛЬНИЙ РУШІЙ (< 768px): Шахматні пари з боків
   document.addEventListener("DOMContentLoaded", () => {
     const observerOptions = {
       root: null,
@@ -73,10 +73,8 @@ if (!isMobile) {
         window.requestAnimationFrame(() => {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
-            entry.target.querySelectorAll(".reveal-line").forEach(l => l.classList.add("is-visible"));
           } else {
             entry.target.classList.remove("is-visible");
-            entry.target.querySelectorAll(".reveal-line").forEach(l => l.classList.remove("is-visible"));
           }
         });
       });
