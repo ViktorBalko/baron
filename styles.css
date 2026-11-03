@@ -52,7 +52,7 @@ body {
   position: absolute;
   right: 5vw;
   top: 15vh;
-  z-index: -1;
+  z-index: 1;
   width: calc(var(--index) * 40);
   height: auto;
 }
@@ -62,7 +62,7 @@ body {
   left: 3vw;
   top: 50vh;
   width: calc(var(--index) * 15);
-  z-index: -1;
+  z-index: 2;
   height: auto;
 }
 
@@ -78,25 +78,21 @@ body {
   flex-direction: column;
 }
 
-/* ЗАХАРДКОДЖЕНІ КВАДРАТНІ БЛОКИ НА ДЕСКОПІ (1:1), БЕЗ БОРДЕРІВ І ЗАЛИВКИ */
 .carousel__text,
 .carousel__image {
-  max-width: calc(var(--index) * 25);
-  width: 100%;
-  aspect-ratio: 1 / 1;
+  max-width: calc(var(--index) * 22);
   margin-bottom: var(--carousel-gap);
-  border-radius: 0;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
+  border-radius: 1em;
 }
 
+/* Квадратний формат тільки для портретних фотографій */
 .carousel__image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
 }
 
 .carousel__text {
-  padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -128,26 +124,8 @@ body {
   display: block;
 }
 
-/* --- ЕФЕКТ ПОЯВИ РЯДКІВ ТЕКСТУ --- */
-.reveal-line {
-  overflow: hidden;
-  display: block;
-}
-
-.reveal-line span {
-  display: block;
-  transform: translateY(100%);
-  opacity: 0;
-  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.reveal-line.is-visible span {
-  transform: translateY(0);
-  opacity: 1;
-}
-
 /* ========================================== */
-/* МОБІЛЬНІ (ДО 768px): КВАДРАТНІ БЛОКИ БЕЗ РАМОК */
+/* МОБІЛЬНІ (ДО 768px): ОДНА КОЛОНКА           */
 /* ========================================== */
 @media (max-width: 768px) {
   html, body {
@@ -156,13 +134,6 @@ body {
     background-color: #000000 !important;
     overflow-x: hidden;
     overflow-y: auto;
-  }
-
-  body::before,
-  body::after,
-  body {
-    -webkit-mask-image: none !important;
-    mask-image: none !important;
   }
 
   .wrapper, .content {
@@ -221,12 +192,10 @@ body {
     display: contents !important;
   }
 
-  /* На мобільних усі блоки теж квадратні, без бордерів і фону */
   .carousel__text,
   .carousel__image {
     max-width: 100% !important;
     width: 100% !important;
-    aspect-ratio: 1 / 1 !important;
     margin: 0 0 30px 0 !important;
     border-radius: 0 !important;
     background: transparent !important;
@@ -236,7 +205,7 @@ body {
 
   .carousel__image {
     width: 100% !important;
-    height: 100% !important;
+    aspect-ratio: 1 / 1 !important;
     display: block;
     object-fit: cover;
   }
@@ -268,7 +237,7 @@ body {
     margin: 60px auto;
   }
 
-  /* Шахматне висунення для мобільних */
+  /* Шахматне висунення для мобільних пристроїв */
   .mobile-pair-left {
     opacity: 0;
     transform: translate3d(-100px, 0, 0);
