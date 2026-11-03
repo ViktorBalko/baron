@@ -5,43 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baron Limited Edition</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Чіткі захардкоджені стилі для анімацій та ефектів прямо тут */
-        .reveal-line {
-            overflow: hidden;
-            display: block;
-        }
-        .reveal-line span {
-            display: block;
-            transform: translateY(100%);
-            opacity: 0;
-            transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        .reveal-line.is-visible span {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        @media (max-width: 768px) {
-            .mobile-pair-left {
-                opacity: 0;
-                transform: translate3d(-100px, 0, 0);
-                transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-                will-change: opacity, transform;
-            }
-            .mobile-pair-right {
-                opacity: 0;
-                transform: translate3d(100px, 0, 0);
-                transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-                will-change: opacity, transform;
-            }
-            .mobile-pair-left.is-visible,
-            .mobile-pair-right.is-visible {
-                opacity: 1;
-                transform: translate3d(0, 0, 0);
-            }
-        }
-    </style>
 </head>
 <body>
 
@@ -116,28 +79,6 @@
 
         </div>
     </div>
-
-    <!-- Захардкоджений мобільний обробник появи (працює виключно за скролом) -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            if (window.innerWidth <= 768) {
-                const observerOptions = { root: null, rootMargin: "0px 0px -5% 0px", threshold: 0.1 };
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add("is-visible");
-                            entry.target.querySelectorAll(".reveal-line").forEach(l => l.classList.add("is-visible"));
-                        } else {
-                            entry.target.classList.remove("is-visible");
-                            entry.target.querySelectorAll(".reveal-line").forEach(l => l.classList.remove("is-visible"));
-                        }
-                    });
-                }, observerOptions);
-
-                document.querySelectorAll(".carousel__item, .img__logo").forEach(item => observer.observe(item));
-            }
-        });
-    </script>
 
     <!-- GSAP скрипти з кореня -->
     <script src="gsap.min.js"></script>
