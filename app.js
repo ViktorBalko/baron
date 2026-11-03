@@ -1,141 +1,24 @@
-// gsap.registerPlugin(ScrollTrigger);
-
-// const isMobile = window.innerWidth <= 768 || /Mobi|Android|iPhone/i.test(navigator.userAgent);
-
-// if (!isMobile) {
-//   // ДЕСКТОП: Плавний паралакс та виїзд колонок
-//   gsap.registerPlugin(ScrollSmoother);
-//   ScrollSmoother.create({
-//     wrapper: ".wrapper",
-//     content: ".content",
-//     smooth: 1.5,
-//     effects: true
-//   });
-
-//   gsap.fromTo(
-//     ".hero-section",
-//     { opacity: 1 },
-//     {
-//       opacity: 0,
-//       scrollTrigger: {
-//         trigger: ".hero-section",
-//         start: "center",
-//         end: "750",
-//         scrub: true
-//       }
-//     }
-//   );
-
-//   gsap.utils.toArray(".carousel__left .carousel__item").forEach((item) => {
-//     gsap.fromTo(
-//       item,
-//       { opacity: 0, x: -120 },
-//       {
-//         opacity: 1,
-//         x: 0,
-//         scrollTrigger: {
-//           trigger: item,
-//           start: "-900",
-//           end: "top",
-//           scrub: true
-//         }
-//       }
-//     );
-//   });
-
-//   gsap.utils.toArray(".carousel__right .carousel__item").forEach((item) => {
-//     gsap.fromTo(
-//       item,
-//       { opacity: 0, x: 130 },
-//       {
-//         opacity: 1,
-//         x: 0,
-//         scrollTrigger: {
-//           trigger: item,
-//           start: "-900",
-//           end: "top",
-//           scrub: true
-//         }
-//       }
-//     );
-//   });
-// } else {
-//   // МОБІЛЬНИЙ: Чистий нативний скрол без важких скриптів
-// }
-
-// // gsap.registerPlugin(ScrollTrigger);
-
-// // const isMobile = window.innerWidth <= 768 || /Mobi|Android|iPhone/i.test(navigator.userAgent);
-
-// // if (!isMobile) {
-// //   // ДЕСКТОП: Твій плавний паралакс із виїздом колонок з боків
-// //   gsap.registerPlugin(ScrollSmoother);
-// //   ScrollSmoother.create({
-// //     wrapper: ".wrapper",
-// //     content: ".content",
-// //     smooth: 1.5,
-// //     effects: true
-// //   });
-
-// //   gsap.fromTo(
-// //     ".hero-section",
-// //     { opacity: 1 },
-// //     {
-// //       opacity: 0,
-// //       scrollTrigger: {
-// //         trigger: ".hero-section",
-// //         start: "center",
-// //         end: "750",
-// //         scrub: true
-// //       }
-// //     }
-// //   );
-
-// //   gsap.utils.toArray(".carousel__left .carousel__item").forEach((item) => {
-// //     gsap.fromTo(
-// //       item,
-// //       { opacity: 0, x: -120 },
-// //       {
-// //         opacity: 1,
-// //         x: 0,
-// //         scrollTrigger: {
-// //           trigger: item,
-// //           start: "-900",
-// //           end: "top",
-// //           scrub: true
-// //         }
-// //       }
-// //     );
-// //   });
-
-// //   gsap.utils.toArray(".carousel__right .carousel__item").forEach((item) => {
-// //     gsap.fromTo(
-// //       item,
-// //       { opacity: 0, x: 130 },
-// //       {
-// //         opacity: 1,
-// //         x: 0,
-// //         scrollTrigger: {
-// //           trigger: item,
-// //           start: "-900",
-// //           end: "top",
-// //           scrub: true
-// //         }
-// //       }
-// //     );
-// //   });
-// // } else {
-// //   // МОБІЛЬНИЙ: Повністю стабільний чистий скрол (анімації та роботу з візуалом беруть на себе CSS-градієнти)
-// // }
-
-
-
 gsap.registerPlugin(ScrollTrigger);
 
 const isMobile = window.innerWidth <= 768 || /Mobi|Android|iPhone/i.test(navigator.userAgent);
 
+// Функція для загортання тексту в рядки для ефекту друкарської машинки
+function initTextReveal() {
+  const headings = document.querySelectorAll(".carousel__text-head, .carousel__text-paragraph");
+  headings.forEach(el => {
+    if (el.dataset.revealed) return;
+    const text = el.innerText;
+    el.innerHTML = `<span class="reveal-line"><span>${text}</span></span>`;
+    el.dataset.revealed = "true";
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  initTextReveal();
+});
+
 if (!isMobile) {
-  // ДЕСКТОП ТА ПЛАНШЕТ (від 768px і вище): ДВІ КОЛОНКИ з плавним GSAP паралаксом
+  // ДЕСКТОП ТА ПЛАНШЕТ (від 768px): Дві колонки, парний симетричний паралакс через GSAP
   gsap.registerPlugin(ScrollSmoother);
   ScrollSmoother.create({
     wrapper: ".wrapper",
@@ -158,16 +41,17 @@ if (!isMobile) {
     }
   );
 
+  // Парний синхронний рух колонок
   gsap.utils.toArray(".carousel__left .carousel__item").forEach((item) => {
     gsap.fromTo(
       item,
-      { opacity: 0, x: -120 },
+      { opacity: 0, x: -100 },
       {
         opacity: 1,
         x: 0,
         scrollTrigger: {
           trigger: item,
-          start: "-900",
+          start: "-850",
           end: "top",
           scrub: true
         }
@@ -178,29 +62,51 @@ if (!isMobile) {
   gsap.utils.toArray(".carousel__right .carousel__item").forEach((item) => {
     gsap.fromTo(
       item,
-      { opacity: 0, x: 130 },
+      { opacity: 0, x: 100 },
       {
         opacity: 1,
         x: 0,
         scrollTrigger: {
           trigger: item,
-          start: "-900",
+          start: "-850",
           end: "top",
           scrub: true
         }
       }
     );
   });
-} else {
-  // МОБІЛЬНИЙ РУШІЙ (< 768px): Двостороння анімація при скролі в обидва боки
-  document.addEventListener("DOMContentLoaded", () => {
-    const images = document.querySelectorAll(".carousel__image");
-    const texts = document.querySelectorAll(".carousel__text");
-    const logo = document.querySelector(".img__logo");
 
-    images.forEach(img => img.classList.add("mobile-slide-left"));
-    texts.forEach(txt => txt.classList.add("mobile-slide-right"));
-    if (logo) logo.classList.add("mobile-slide-left");
+  // Активація появи рядків тексту на десктопі
+  gsap.utils.toArray(".carousel__text").forEach((textBlock) => {
+    ScrollTrigger.create({
+      trigger: textBlock,
+      start: "top 80%",
+      onEnter: () => textBlock.querySelectorAll(".reveal-line").forEach(l => l.classList.add("is-visible")),
+      onLeaveBack: () => textBlock.querySelectorAll(".reveal-line").forEach(l => l.classList.remove("is-visible"))
+    });
+  });
+
+} else {
+  // МОБІЛЬНИЙ РУШІЙ (< 768px): Шахматні пари (Фото/Текст чергуються зліва і справа) + звороти
+  document.addEventListener("DOMContentLoaded", () => {
+    // Знаходимо всі елементи по порядку: [Фото1, Текст1, Фото2, Текст2, Фото3...]
+    const allCarouselItems = document.querySelectorAll(".carousel__item");
+
+    allCarouselItems.setItem = (index, direction) => {
+      // Якщо парний індекс (0, 2, 4...) — йде зліва, непарний (1, 3, 5...) — справа
+    };
+
+    allCarouselItems.forEach((item, index) => {
+      // Шахматний порядок: парні виринають зліва, непарні справа
+      if (index % 2 === 0) {
+        item.classList.add("mobile-pair-left");
+      } else {
+        item.classList.add("mobile-pair-right");
+      }
+    });
+
+    const logo = document.querySelector(".img__logo");
+    if (logo) logo.classList.add("mobile-pair-left");
 
     const observerOptions = {
       root: null,
@@ -211,120 +117,28 @@ if (!isMobile) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         window.requestAnimationFrame(() => {
+          const textContainer = entry.target.querySelector ? entry.target : null;
+          
           if (entry.isIntersecting) {
-            // Коли елемент з'являється у вікні — виринає
             entry.target.classList.add("is-visible");
+            // Запускаємо анімацію рядків тексту всередині блоку
+            entry.target.querySelectorAll(".reveal-line").forEach(l => l.classList.add("is-visible"));
+            if (entry.target.classList.contains("carousel__text")) {
+              entry.target.querySelectorAll(".reveal-line").forEach(l => l.classList.add("is-visible"));
+            }
           } else {
-            // Коли елемент виходить з вікна (при зворотному скролі) — ховається назад
             entry.target.classList.remove("is-visible");
+            entry.target.querySelectorAll(".reveal-line").forEach(l => l.classList.remove("is-visible"));
           }
         });
       });
     }, observerOptions);
 
-    [...images, ...texts, logo].forEach(item => {
-      if (item) observer.observe(item);
+    [...allCarouselItems, logo].forEach(item => {
+      if (item) {
+        // Якщо це текстовий блок, також чіпляємо спостерігач на внутрішні рядки
+        observer.observe(item);
+      }
     });
   });
 }
-
-
-
-// gsap.registerPlugin(ScrollTrigger);
-
-// const isMobile = window.innerWidth <= 768 || /Mobi|Android|iPhone/i.test(navigator.userAgent);
-
-// if (!isMobile) {
-//   // ДЕСКТОП ТА ПЛАНШЕТ (від 768px і вище): ДВІ КОЛОНКИ з плавним GSAP паралаксом
-//   gsap.registerPlugin(ScrollSmoother);
-//   ScrollSmoother.create({
-//     wrapper: ".wrapper",
-//     content: ".content",
-//     smooth: 1.5,
-//     effects: true
-//   });
-
-//   gsap.fromTo(
-//     ".hero-section",
-//     { opacity: 1 },
-//     {
-//       opacity: 0,
-//       scrollTrigger: {
-//         trigger: ".hero-section",
-//         start: "center",
-//         end: "750",
-//         scrub: true
-//       }
-//     }
-//   );
-
-//   gsap.utils.toArray(".carousel__left .carousel__item").forEach((item) => {
-//     gsap.fromTo(
-//       item,
-//       { opacity: 0, x: -120 },
-//       {
-//         opacity: 1,
-//         x: 0,
-//         scrollTrigger: {
-//           trigger: item,
-//           start: "-900",
-//           end: "top",
-//           scrub: true
-//         }
-//       }
-//     );
-//   });
-
-//   gsap.utils.toArray(".carousel__right .carousel__item").forEach((item) => {
-//     gsap.fromTo(
-//       item,
-//       { opacity: 0, x: 130 },
-//       {
-//         opacity: 1,
-//         x: 0,
-//         scrollTrigger: {
-//           trigger: item,
-//           start: "-900",
-//           end: "top",
-//           scrub: true
-//         }
-//       }
-//     );
-//   });
-// } else {
-//   // МОБІЛЬНИЙ РУШІЙ (< 768px): Легке виринання фото зліва, а тексту справа
-//   document.addEventListener("DOMContentLoaded", () => {
-//     const images = document.querySelectorAll(".carousel__image");
-//     const texts = document.querySelectorAll(".carousel__text");
-//     const logo = document.querySelector(".img__logo");
-
-//     // Картинкам додаємо висунення зліва
-//     images.forEach(img => img.classList.add("mobile-slide-left"));
-    
-//     // Тексту додаємо висунення справа
-//     texts.forEach(txt => txt.classList.add("mobile-slide-right"));
-
-//     if (logo) logo.classList.add("mobile-slide-left");
-
-//     const observerOptions = {
-//       root: null,
-//       rootMargin: "0px 0px -10% 0px",
-//       threshold: 0.15
-//     };
-
-//     const observer = new IntersectionObserver((entries, observer) => {
-//       entries.forEach(entry => {
-//         if (entry.isIntersecting) {
-//           window.requestAnimationFrame(() => {
-//             entry.target.classList.add("is-visible");
-//           });
-//           observer.unobserve(entry.target);
-//         }
-//       });
-//     }, observerOptions);
-
-//     [...images, ...texts, logo].forEach(item => {
-//       if (item) observer.observe(item);
-//     });
-//   });
-// }
