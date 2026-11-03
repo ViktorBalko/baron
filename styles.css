@@ -9,7 +9,7 @@
   --main-text-color: #fafafa;
   --secondary-text-color: #c2c2c2;
   --main-background-color: #000000;
-  --carousel-gap: calc(var(--index) * 4);
+  --carousel-gap: calc(var(--index) * 5);
 }
 
 @font-face {
@@ -54,6 +54,7 @@ body {
   top: 15vh;
   z-index: -1;
   width: calc(var(--index) * 40);
+  height: auto;
 }
 
 .hero-section__logo {
@@ -62,11 +63,11 @@ body {
   top: 50vh;
   width: calc(var(--index) * 15);
   z-index: -1;
+  height: auto;
 }
 
 .carousel {
   display: flex;
-  gap: calc(var(--index) * 4);
   padding: calc(var(--index) * 4) 0;
   background-color: #000000;
 }
@@ -77,15 +78,17 @@ body {
   flex-direction: column;
 }
 
-/* ЗАХАРДКОДЖЕНІ КВАДРАТНІ БЛОКИ НА ДЕСКТОПІ (1:1) */
+/* ЗАХАРДКОДЖЕНІ КВАДРАТНІ БЛОКИ НА ДЕСКОПІ (1:1), БЕЗ БОРДЕРІВ І ЗАЛИВКИ */
 .carousel__text,
 .carousel__image {
+  max-width: calc(var(--index) * 25);
   width: 100%;
-  max-width: calc(var(--index) * 26);
-  aspect-ratio: 1 / 1; /* Жорсткий квадрат */
+  aspect-ratio: 1 / 1;
   margin-bottom: var(--carousel-gap);
-  border-radius: 1.2em;
-  overflow: hidden;
+  border-radius: 0;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .carousel__image {
@@ -93,30 +96,28 @@ body {
 }
 
 .carousel__text {
-  background: #0a0a0a;
-  padding: calc(var(--index) * 2.5);
+  padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .carousel__text-head {
   font-family: outfit-tag, sans-serif;
   color: var(--main-text-color);
-  font-size: 1.8rem;
+  font-size: 2rem;
   padding-bottom: calc(var(--index) * 0.5);
 }
 
 .carousel__text-paragraph {
   font-family: relaway-tag, sans-serif;
   color: var(--secondary-text-color);
-  font-size: 1.1rem;
-  line-height: 1.6rem;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
 }
 
 .carousel__left {
-  margin-top: calc(var(--index) * 10);
+  margin-top: calc(var(--index) * 13);
 }
 
 .img__logo {
@@ -127,7 +128,7 @@ body {
   display: block;
 }
 
-/* --- АНІМАЦІЯ ПОЯВИ РЯДКІВ ТЕКСТУ --- */
+/* --- ЕФЕКТ ПОЯВИ РЯДКІВ ТЕКСТУ --- */
 .reveal-line {
   overflow: hidden;
   display: block;
@@ -146,7 +147,7 @@ body {
 }
 
 /* ========================================== */
-/* МОБІЛЬНІ (ДО 768px): КВАДРАТНА ПІРАМІДКА     */
+/* МОБІЛЬНІ (ДО 768px): КВАДРАТНІ БЛОКИ БЕЗ РАМОК */
 /* ========================================== */
 @media (max-width: 768px) {
   html, body {
@@ -195,6 +196,7 @@ body {
     z-index: 1 !important;
     opacity: 0.9;
     border-radius: 0 !important;
+    height: auto !important;
   }
 
   .hero-section__logo {
@@ -203,13 +205,14 @@ body {
     top: 12vh !important;
     width: 60vw !important;
     z-index: 2 !important;
+    height: auto !important;
   }
 
   .carousel {
     display: flex !important;
     flex-direction: column !important;
-    padding: 20px 0 !important;
-    gap: 20px !important;
+    padding: 30px 0 !important;
+    gap: 30px !important;
     background-color: #000000 !important;
   }
 
@@ -218,37 +221,40 @@ body {
     display: contents !important;
   }
 
-  /* На мобільних усі блоки теж стають чіткими квадратами один за одним */
+  /* На мобільних усі блоки теж квадратні, без бордерів і фону */
   .carousel__text,
   .carousel__image {
     max-width: 100% !important;
     width: 100% !important;
     aspect-ratio: 1 / 1 !important;
-    margin: 0 0 20px 0 !important;
-    border-radius: 16px !important;
+    margin: 0 0 30px 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
   }
 
   .carousel__image {
     width: 100% !important;
-    height: auto !important;
+    height: 100% !important;
     display: block;
+    object-fit: cover;
   }
 
   .carousel__text {
-    background: #080808 !important;
-    padding: 28px !important;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0 !important;
+    justify-content: center;
   }
 
   .carousel__text-head {
-    font-size: 1.5rem !important;
+    font-size: 1.6rem !important;
     color: #ffffff !important;
     margin-bottom: 12px !important;
   }
 
   .carousel__text-paragraph {
-    font-size: 1rem !important;
-    line-height: 1.5rem !important;
+    font-size: 1.1rem !important;
+    line-height: 1.6rem !important;
     color: #b0b0b0 !important;
   }
 
@@ -259,20 +265,20 @@ body {
   .img__logo {
     width: 70vw;
     max-width: 300px;
-    margin: 40px auto;
+    margin: 60px auto;
   }
 
-  /* Шахматне висунення для мобільної пірамідки */
+  /* Шахматне висунення для мобільних */
   .mobile-pair-left {
     opacity: 0;
-    transform: translate3d(-80px, 0, 0);
+    transform: translate3d(-100px, 0, 0);
     transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
     will-change: opacity, transform;
   }
 
   .mobile-pair-right {
     opacity: 0;
-    transform: translate3d(80px, 0, 0);
+    transform: translate3d(100px, 0, 0);
     transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
     will-change: opacity, transform;
   }
