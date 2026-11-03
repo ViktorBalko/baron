@@ -60,7 +60,7 @@ if (!isMobile) {
     );
   });
 } else {
-  // МОБІЛЬНИЙ РУШІЙ (< 768px): Шахматне висунення пірамідки + поява рядків
+  // МОБІЛЬНИЙ РУШІЙ (< 768px): Шахматні пари з боків + поява рядків тексту при скролі
   document.addEventListener("DOMContentLoaded", () => {
     const observerOptions = {
       root: null,
