@@ -1,204 +1,3 @@
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --index: calc(1vw + 1vh);
-  --main-text-color: #fafafa;
-  --secondary-text-color: #c2c2c2;
-  --main-background-color: #000000;
-  --carousel-gap: calc(var(--index) * 5);
-}
-
-@font-face {
-  font-family: relaway-tag;
-  src: url('raleway-regular.woff2');
-}
-
-@font-face {
-  font-family: outfit-tag;
-  src: url('outfit-regular.woff2');
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--main-background-color);
-  font-family: relaway-tag, sans-serif;
-  color: var(--main-text-color);
-  overflow-x: hidden;
-}
-
-.hero-section {
-  height: 100vh;
-  position: relative;
-}
-
-.hero-header {
-  height: 100vh;
-}
-
-.container {
-  padding: 0 7vw;
-}
-
-.hero-section__picture {
-  position: absolute;
-  right: 5vw;
-  top: 15vh;
-  z-index: -1;
-  width: calc(var(--index) * 40);
-}
-
-.hero-section__logo {
-  position: absolute;
-  left: 3vw;
-  top: 50vh;
-  width: calc(var(--index) * 15);
-  z-index: -1;
-}
-
-.carousel {
-  display: flex;
-  padding: calc(var(--index) * 4) 0;
-}
-
-.carousel > * {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.carousel__text,
-.carousel__image {
-  max-width: calc(var(--index) * 22);
-  margin-bottom: var(--carousel-gap);
-  border-radius: 1em;
-}
-
-.carousel__image {
-  height: auto;
-  object-fit: cover;
-}
-
-.carousel__text-head {
-  font-family: outfit-tag, sans-serif;
-  color: var(--main-text-color);
-  font-size: 2rem;
-  padding-bottom: calc(var(--index) * 0.5);
-}
-
-.carousel__text-paragraph {
-  font-family: relaway-tag, sans-serif;
-  color: var(--secondary-text-color);
-  font-size: 1.3rem;
-  line-height: 1.8rem;
-}
-
-.carousel__left {
-  margin-top: calc(var(--index) * 13);
-}
-
-.img__logo {
-  margin: 0 auto 10vh;
-  transform: skewX(-11deg);
-  filter: invert(1);
-  width: 370px;
-  display: block;
-}
-
-
-@media (max-width: 768px) {
-  html, body {
-    width: 100%;
-    min-height: 100vh;
-    background-color: #000000 !important;
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-
-  body::before,
-  body::after,
-  body {
-    -webkit-mask-image: none !important;
-    mask-image: none !important;
-  }
-
-  .wrapper, .content {
-    width: 100%;
-    height: auto;
-    overflow: visible;
-  }
-
-  .container {
-    padding: 0 5vw;
-  }
-
-  .hero-section {
-    height: 100vh;
-    position: relative;
-    display: block !important;
-  }
-
-  .hero-header {
-    height: 100vh;
-    position: relative;
-  }
-
-  .hero-section__picture {
-    position: absolute !important;
-    width: 80vw !important;
-    right: 10vw !important;
-    top: 20vh !important;
-    z-index: 1 !important;
-    opacity: 0.9;
-  }
-
-  .hero-section__logo {
-    position: absolute !important;
-    left: 8vw !important;
-    top: 12vh !important;
-    width: 50vw !important;
-    z-index: 2 !important;
-  }
-
-  .carousel {
-    display: flex !important;
-    flex-direction: column !important;
-    padding: 40px 0 !important;
-    gap: 3rem !important;
-  }
-
-  .carousel__left,
-  .carousel__right {
-    display: contents !important;
-  }
-
-  .carousel__text,
-  .carousel__image {
-    max-width: 100% !important;
-    width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    margin-bottom: 2rem !important;
-  }
-
-  .carousel__left {
-    margin-top: 0 !important;
-  }
-
-  .img__logo {
-    width: 80vw;
-    max-width: 370px;
-    margin-bottom: 40px;
-  }
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -313,288 +112,28 @@ body {
   display: block;
 }
 
-/* ========================================== */
-/* МОБІЛЬНІ (ДО 768px): ПОВНА ШИРИНА, БЕЗ РАДІУСІВ */
-/* ========================================== */
-@media (max-width: 768px) {
-  html, body {
-    width: 100%;
-    min-height: 100vh;
-    background-color: #000000 !important;
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-
-  body::before,
-  body::after,
-  body {
-    -webkit-mask-image: none !important;
-    mask-image: none !important;
-  }
-
-  .wrapper, .content {
-    width: 100%;
-    height: auto;
-    overflow: visible;
-  }
-
-  .container {
-    padding: 0 !important;
-  }
-
-  .hero-section {
-    height: 100vh;
-    position: relative;
-    display: block !important;
-  }
-
-  .hero-header {
-    height: 100vh;
-    position: relative;
-  }
-
-  .hero-section__picture {
-    position: absolute !important;
-    width: 90vw !important;
-    right: 5vw !important;
-    top: 20vh !important;
-    z-index: 1 !important;
-    opacity: 0.9;
-    border-radius: 0 !important;
-  }
-
-  .hero-section__logo {
-    position: absolute !important;
-    left: 5vw !important;
-    top: 12vh !important;
-    width: 60vw !important;
-    z-index: 2 !important;
-  }
-
-  .carousel {
-    display: flex !important;
-    flex-direction: column !important;
-    padding: 0 !important;
-    gap: 0 !important;
-  }
-
-  .carousel__left,
-  .carousel__right {
-    display: contents !important;
-  }
-
-  .carousel__text,
-  .carousel__image {
-    max-width: 100% !important;
-    width: 100% !important;
-    margin: 0 !important;
-    border-radius: 0 !important;
-  }
-
-  .carousel__image {
-    width: 100% !important;
-    height: auto !important;
-    display: block;
-  }
-
-  .carousel__text {
-    background: #080808 !important;
-    padding: 36px 6vw !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .carousel__text-head {
-    font-size: 1.8rem !important;
-    color: #ffffff !important;
-    margin-bottom: 16px !important;
-  }
-
-  .carousel__text-paragraph {
-    font-size: 1.1rem !important;
-    line-height: 1.6rem !important;
-    color: #b0b0b0 !important;
-  }
-
-  .carousel__left {
-    margin-top: 0 !important;
-  }
-
-  .img__logo {
-    width: 70vw;
-    max-width: 300px;
-    margin: 60px auto;
-  }
-
-  /* --- ЗВУЖЕНИЙ ТА ПЛАВНИЙ ДІАПАЗОН АНІМАЦІЙ ЗІ ЗВОРОТНИМ ЕФЕКТОМ --- */
-
-  /* Фото: виїзд зліва, повільніший час (1.2с) та м'яка крива інерції */
-  .mobile-slide-left {
-    opacity: 0;
-    transform: translate3d(-120px, 0, 0);
-    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-    will-change: opacity, transform;
-  }
-
-  /* Текст: виїзд справа */
-  .mobile-slide-right {
-    opacity: 0;
-    transform: translate3d(120px, 0, 0);
-    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-    will-change: opacity, transform;
-  }
-
-  /* Стан видимості (коли елемент в екрані) */
-  .mobile-slide-left.is-visible,
-  .mobile-slide-right.is-visible {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-  .carousel__text {
-    background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    padding: 24px 20px !important;
-    border-radius: 16px !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important;
-    backdrop-filter: blur(10px);
-    margin-top: 15px !important;
-    margin-bottom: 25px !important;
-  }
-
-  
-  .carousel__text-head {
-    color: #4ade80 !important; 
-    font-size: 1.6rem !important;
-    border-bottom: 1px solid rgba(74, 222, 128, 0.2);
-    padding-bottom: 10px !important;
-    margin-bottom: 12px !important;
-  }
-
-  .carousel__image {
-    border-radius: 16px !important;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9) !important;
-    margin-bottom: 15px !important;
-  }
-
-  .hero-section {
-    background: radial-gradient(circle at center, #111 0%, #000 70%);
-  } */
-
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --index: calc(1vw + 1vh);
-  --main-text-color: #fafafa;
-  --secondary-text-color: #c2c2c2;
-  --main-background-color: #000000;
-  --carousel-gap: calc(var(--index) * 5);
-}
-
-@font-face {
-  font-family: relaway-tag;
-  src: url('raleway-regular.woff2');
-}
-
-@font-face {
-  font-family: outfit-tag;
-  src: url('outfit-regular.woff2');
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--main-background-color);
-  font-family: relaway-tag, sans-serif;
-  color: var(--main-text-color);
-  overflow-x: hidden;
-}
-
-.hero-section {
-  height: 100vh;
-  position: relative;
-}
-
-.hero-header {
-  height: 100vh;
-}
-
-.container {
-  padding: 0 7vw;
-}
-
-.hero-section__picture {
-  position: absolute;
-  right: 5vw;
-  top: 15vh;
-  z-index: -1;
-  width: calc(var(--index) * 40);
-}
-
-.hero-section__logo {
-  position: absolute;
-  left: 3vw;
-  top: 50vh;
-  width: calc(var(--index) * 15);
-  z-index: -1;
-}
-
-.carousel {
-  display: flex;
-  padding: calc(var(--index) * 4) 0;
-}
-
-.carousel > * {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.carousel__text,
-.carousel__image {
-  max-width: calc(var(--index) * 22);
-  margin-bottom: var(--carousel-gap);
-  border-radius: 1em;
-}
-
-.carousel__image {
-  height: auto;
-  object-fit: cover;
-}
-
-.carousel__text-head {
-  font-family: outfit-tag, sans-serif;
-  color: var(--main-text-color);
-  font-size: 2rem;
-  padding-bottom: calc(var(--index) * 0.5);
-}
-
-.carousel__text-paragraph {
-  font-family: relaway-tag, sans-serif;
-  color: var(--secondary-text-color);
-  font-size: 1.3rem;
-  line-height: 1.8rem;
-}
-
-.carousel__left {
-  margin-top: calc(var(--index) * 13);
-}
-
-.img__logo {
-  margin: 0 auto 10vh;
-  transform: skewX(-11deg);
-  filter: invert(1);
-  width: 370px;
+/* ЕФЕКТ ПОЯВИ ТЕКСТУ ПО ОДНОМУ РЯДКУ (Кліпимо по висоті) */
+.reveal-line {
+  overflow: hidden;
   display: block;
 }
 
+.reveal-line span {
+  display: block;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.reveal-line.is-visible span {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+
+/* ========================================== */
+/* МОБІЛЬНІ (ДО 768px): ШАХМАТНИЙ ПАРНИЙ ПОТІК */
+/* ========================================== */
 @media (max-width: 768px) {
   html, body {
     width: 100%;
@@ -618,7 +157,7 @@ body {
   }
 
   .container {
-    padding: 0 !important; 
+    padding: 0 !important;
   }
 
   .hero-section {
@@ -704,24 +243,27 @@ body {
     margin: 60px auto;
   }
 
+  /* --- ШАХМАТНІ АНІМАЦІЇ ПАР НА МОБІЛЬНИХ --- */
   
-  .mobile-slide-left {
+  /* Елементи, що виринають зліва */
+  .mobile-pair-left {
     opacity: 0;
     transform: translate3d(-100px, 0, 0);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
     will-change: opacity, transform;
   }
 
-  .mobile-slide-right {
+  /* Елементи, що виринають справа */
+  .mobile-pair-right {
     opacity: 0;
     transform: translate3d(100px, 0, 0);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
     will-change: opacity, transform;
   }
 
-  .mobile-slide-left.is-visible,
-  .mobile-slide-right.is-visible {
+  .mobile-pair-left.is-visible,
+  .mobile-pair-right.is-visible {
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }
-} */
+}
