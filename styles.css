@@ -201,3 +201,42 @@ body {
     margin-bottom: 40px;
   }
 }
+
+
+/* ========================================== */
+  /* СТИЛЬНІШИЙ І ВЕСЕЛІШИЙ ДИЗАЙН ДЛЯ ТЕЛЕФОНІВ */
+  /* ========================================== */
+
+  /* Робимо темні преміум-підкладки (картки) під текстовими блоками */
+  .carousel__text {
+    background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding: 24px 20px !important;
+    border-radius: 16px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(10px);
+    margin-top: 15px !important;
+    margin-bottom: 25px !important;
+  }
+
+  /* Додаємо невеликий зеленуватий або брендовий акцент на заголовок, щоб гармоніювало з годинником */
+  .carousel__text-head {
+    color: #4ade80 !important; /* М'який неоново-зелений акцент під циферблат */
+    font-size: 1.6rem !important;
+    border-bottom: 1px solid rgba(74, 222, 128, 0.2);
+    padding-bottom: 10px !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* Картинки теж робимо з ефектними тінями та заокругленнями */
+  .carousel__image {
+    border-radius: 16px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9) !important;
+    margin-bottom: 15px !important;
+  }
+
+  /* Герої-секція для телефону: робимо її більш атмосферною */
+  .hero-section {
+    background: radial-gradient(circle at center, #111 0%, #000 70%);
+  }
