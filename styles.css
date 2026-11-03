@@ -1,3 +1,238 @@
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --index: calc(1vw + 1vh);
+  --main-text-color: #fafafa;
+  --secondary-text-color: #c2c2c2;
+  --main-background-color: #000000;
+  --carousel-gap: calc(var(--index) * 5);
+}
+
+@font-face {
+  font-family: relaway-tag;
+  src: url('raleway-regular.woff2');
+}
+
+@font-face {
+  font-family: outfit-tag;
+  src: url('outfit-regular.woff2');
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--main-background-color);
+  font-family: relaway-tag, sans-serif;
+  color: var(--main-text-color);
+  overflow-x: hidden;
+}
+
+.hero-section {
+  height: 100vh;
+  position: relative;
+}
+
+.hero-header {
+  height: 100vh;
+}
+
+.container {
+  padding: 0 7vw;
+}
+
+.hero-section__picture {
+  position: absolute;
+  right: 5vw;
+  top: 15vh;
+  z-index: -1;
+  width: calc(var(--index) * 40);
+}
+
+.hero-section__logo {
+  position: absolute;
+  left: 3vw;
+  top: 50vh;
+  width: calc(var(--index) * 15);
+  z-index: -1;
+}
+
+.carousel {
+  display: flex;
+  padding: calc(var(--index) * 4) 0;
+}
+
+.carousel > * {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carousel__text,
+.carousel__image {
+  max-width: calc(var(--index) * 22);
+  margin-bottom: var(--carousel-gap);
+  border-radius: 1em;
+}
+
+.carousel__image {
+  height: auto;
+  object-fit: cover;
+}
+
+.carousel__text-head {
+  font-family: outfit-tag, sans-serif;
+  color: var(--main-text-color);
+  font-size: 2rem;
+  padding-bottom: calc(var(--index) * 0.5);
+}
+
+.carousel__text-paragraph {
+  font-family: relaway-tag, sans-serif;
+  color: var(--secondary-text-color);
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+}
+
+.carousel__left {
+  margin-top: calc(var(--index) * 13);
+}
+
+.img__logo {
+  margin: 0 auto 10vh;
+  transform: skewX(-11deg);
+  filter: invert(1);
+  width: 370px;
+  display: block;
+}
+
+
+@media (max-width: 768px) {
+  html, body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #000000 !important;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  body::before,
+  body::after,
+  body {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+
+  .wrapper, .content {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .container {
+    padding: 0 5vw;
+  }
+
+  .hero-section {
+    height: 100vh;
+    position: relative;
+    display: block !important;
+  }
+
+  .hero-header {
+    height: 100vh;
+    position: relative;
+  }
+
+  .hero-section__picture {
+    position: absolute !important;
+    width: 80vw !important;
+    right: 10vw !important;
+    top: 20vh !important;
+    z-index: 1 !important;
+    opacity: 0.9;
+  }
+
+  .hero-section__logo {
+    position: absolute !important;
+    left: 8vw !important;
+    top: 12vh !important;
+    width: 50vw !important;
+    z-index: 2 !important;
+  }
+
+  .carousel {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 40px 0 !important;
+    gap: 3rem !important;
+  }
+
+  .carousel__left,
+  .carousel__right {
+    display: contents !important;
+  }
+
+  .carousel__text,
+  .carousel__image {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .carousel__left {
+    margin-top: 0 !important;
+  }
+
+  .img__logo {
+    width: 80vw;
+    max-width: 370px;
+    margin-bottom: 40px;
+  }
+}
+
+
+
+  .carousel__text {
+    background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding: 24px 20px !important;
+    border-radius: 16px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(10px);
+    margin-top: 15px !important;
+    margin-bottom: 25px !important;
+  }
+
+  
+  .carousel__text-head {
+    color: #4ade80 !important; 
+    font-size: 1.6rem !important;
+    border-bottom: 1px solid rgba(74, 222, 128, 0.2);
+    padding-bottom: 10px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .carousel__image {
+    border-radius: 16px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9) !important;
+    margin-bottom: 15px !important;
+  }
+
+  .hero-section {
+    background: radial-gradient(circle at center, #111 0%, #000 70%);
+  } */
+
+
 * {
   margin: 0;
   padding: 0;
@@ -113,7 +348,7 @@ body {
 }
 
 /* ========================================== */
-/* АДАПТИВНІСТЬ ДЛЯ МОБІЛЬНИХ ПРИСТРОЇВ       */
+/* МОБІЛЬНІ (ДО 768px): НА ВСЮ ШИРИНУ, БЕЗ РАДІУСІВ */
 /* ========================================== */
 @media (max-width: 768px) {
   html, body {
@@ -124,7 +359,6 @@ body {
     overflow-y: auto;
   }
 
-  /* НАЗАВЖДИ ВИДАЛЯЄМО БУДЬ-ЯКІ ПЛАШКИ ЧИ МАСКИ */
   body::before,
   body::after,
   body {
@@ -139,7 +373,7 @@ body {
   }
 
   .container {
-    padding: 0 5vw;
+    padding: 0 !important; /* На всю ширину екрана */
   }
 
   .hero-section {
@@ -155,26 +389,28 @@ body {
 
   .hero-section__picture {
     position: absolute !important;
-    width: 80vw !important;
-    right: 10vw !important;
+    width: 90vw !important;
+    right: 5vw !important;
     top: 20vh !important;
     z-index: 1 !important;
     opacity: 0.9;
+    border-radius: 0 !important;
   }
 
   .hero-section__logo {
     position: absolute !important;
-    left: 8vw !important;
+    left: 5vw !important;
     top: 12vh !important;
-    width: 50vw !important;
+    width: 60vw !important;
     z-index: 2 !important;
   }
 
+  /* Перетворюємо карусель на вертикальний потік на повну ширину */
   .carousel {
     display: flex !important;
     flex-direction: column !important;
-    padding: 40px 0 !important;
-    gap: 3rem !important;
+    padding: 0 !important;
+    gap: 0 !important;
   }
 
   .carousel__left,
@@ -182,13 +418,37 @@ body {
     display: contents !important;
   }
 
+  /* Жодних заокруглень, повна ширина екрана */
   .carousel__text,
   .carousel__image {
     max-width: 100% !important;
     width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    margin-bottom: 2rem !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .carousel__image {
+    width: 100% !important;
+    height: auto !important;
+    display: block;
+  }
+
+  .carousel__text {
+    background: #080808 !important;
+    padding: 32px 6vw !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .carousel__text-head {
+    font-size: 1.8rem !important;
+    color: #ffffff !important;
+    margin-bottom: 16px !important;
+  }
+
+  .carousel__text-paragraph {
+    font-size: 1.1rem !important;
+    line-height: 1.6rem !important;
+    color: #b0b0b0 !important;
   }
 
   .carousel__left {
@@ -196,47 +456,21 @@ body {
   }
 
   .img__logo {
-    width: 80vw;
-    max-width: 370px;
-    margin-bottom: 40px;
+    width: 70vw;
+    max-width: 300px;
+    margin: 60px auto;
+  }
+
+  /* Класи для мобільної апаратної анімації через requestAnimationFrame / transform3d */
+  .mobile-fade-element {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  .mobile-fade-element.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 }
-
-
-/* ========================================== */
-  /* СТИЛЬНІШИЙ І ВЕСЕЛІШИЙ ДИЗАЙН ДЛЯ ТЕЛЕФОНІВ */
-  /* ========================================== */
-
-  /* Робимо темні преміум-підкладки (картки) під текстовими блоками */
-  .carousel__text {
-    background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    padding: 24px 20px !important;
-    border-radius: 16px !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important;
-    backdrop-filter: blur(10px);
-    margin-top: 15px !important;
-    margin-bottom: 25px !important;
-  }
-
-  /* Додаємо невеликий зеленуватий або брендовий акцент на заголовок, щоб гармоніювало з годинником */
-  .carousel__text-head {
-    color: #4ade80 !important; /* М'який неоново-зелений акцент під циферблат */
-    font-size: 1.6rem !important;
-    border-bottom: 1px solid rgba(74, 222, 128, 0.2);
-    padding-bottom: 10px !important;
-    margin-bottom: 12px !important;
-  }
-
-  /* Картинки теж робимо з ефектними тінями та заокругленнями */
-  .carousel__image {
-    border-radius: 16px !important;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9) !important;
-    margin-bottom: 15px !important;
-  }
-
-  /* Герої-секція для телефону: робимо її більш атмосферною */
-  .hero-section {
-    background: radial-gradient(circle at center, #111 0%, #000 70%);
-  }
