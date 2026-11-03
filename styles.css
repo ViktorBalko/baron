@@ -24,10 +24,11 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #000000;
 }
 
 body {
-  background: var(--main-background-color);
+  background: var(--main-background-color) !important;
   font-family: relaway-tag, sans-serif;
   color: var(--main-text-color);
   overflow-x: hidden;
@@ -36,6 +37,7 @@ body {
 .hero-section {
   height: 100vh;
   position: relative;
+  background: #000000;
 }
 
 .hero-header {
@@ -65,6 +67,7 @@ body {
 .carousel {
   display: flex;
   padding: calc(var(--index) * 4) 0;
+  background-color: #000000;
 }
 
 .carousel > * {
@@ -112,7 +115,7 @@ body {
   display: block;
 }
 
-/* ЕФЕКТ ПОЯВИ ТЕКСТУ ПО ОДНОМУ РЯДКУ (Кліпимо по висоті) */
+/* --- АНІМАЦІЯ ПОЯВИ РЯДКІВ ТЕКСТУ --- */
 .reveal-line {
   overflow: hidden;
   display: block;
@@ -122,7 +125,7 @@ body {
   display: block;
   transform: translateY(100%);
   opacity: 0;
-  transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1), opacity 1s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .reveal-line.is-visible span {
@@ -130,9 +133,8 @@ body {
   opacity: 1;
 }
 
-
 /* ========================================== */
-/* МОБІЛЬНІ (ДО 768px): ШАХМАТНИЙ ПАРНИЙ ПОТІК */
+/* МОБІЛЬНІ (ДО 768px): ОДНА КОЛОНКА, ШАХМАТИ */
 /* ========================================== */
 @media (max-width: 768px) {
   html, body {
@@ -154,6 +156,7 @@ body {
     width: 100%;
     height: auto;
     overflow: visible;
+    background-color: #000000 !important;
   }
 
   .container {
@@ -164,6 +167,7 @@ body {
     height: 100vh;
     position: relative;
     display: block !important;
+    background: #000000 !important;
   }
 
   .hero-header {
@@ -194,6 +198,7 @@ body {
     flex-direction: column !important;
     padding: 0 !important;
     gap: 0 !important;
+    background-color: #000000 !important;
   }
 
   .carousel__left,
@@ -216,7 +221,7 @@ body {
   }
 
   .carousel__text {
-    background: #080808 !important;
+    background: #050505 !important;
     padding: 36px 6vw !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
@@ -243,9 +248,7 @@ body {
     margin: 60px auto;
   }
 
-  /* --- ШАХМАТНІ АНІМАЦІЇ ПАР НА МОБІЛЬНИХ --- */
-  
-  /* Елементи, що виринають зліва */
+  /* Початкові стани шахматного висунення на мобільних */
   .mobile-pair-left {
     opacity: 0;
     transform: translate3d(-100px, 0, 0);
@@ -253,7 +256,6 @@ body {
     will-change: opacity, transform;
   }
 
-  /* Елементи, що виринають справа */
   .mobile-pair-right {
     opacity: 0;
     transform: translate3d(100px, 0, 0);
