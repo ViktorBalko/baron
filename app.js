@@ -132,7 +132,7 @@ gsap.registerPlugin(ScrollTrigger);
 const isMobile = window.innerWidth <= 768 || /Mobi|Android|iPhone/i.test(navigator.userAgent);
 
 if (!isMobile) {
-  // ДЕСКТОП ТА ПЛАНШЕТ (від 768px і вище): ДВІ КОЛОНКИ з плавним скролом та GSAP
+  // ДЕСКТОП ТА ПЛАНШЕТ (від 768px і вище): ДВІ КОЛОНКИ з плавним GSAP паралаксом
   gsap.registerPlugin(ScrollSmoother);
   ScrollSmoother.create({
     wrapper: ".wrapper",
@@ -189,12 +189,19 @@ if (!isMobile) {
     );
   });
 } else {
-  // МОБІЛЬНИЙ РУШІЙ (менше 768px): Легкі апаратні анімації через requestAnimationFrame та IntersectionObserver
+  // МОБІЛЬНИЙ РУШІЙ (< 768px): Легке виринання фото зліва, а тексту справа
   document.addEventListener("DOMContentLoaded", () => {
-    const items = document.querySelectorAll(".carousel__item, .img__logo");
+    const images = document.querySelectorAll(".carousel__image");
+    const texts = document.querySelectorAll(".carousel__text");
+    const logo = document.querySelector(".img__logo");
+
+    // Картинкам додаємо висунення зліва
+    images.forEach(img => img.classList.add("mobile-slide-left"));
     
-    // Додаємо клас готовності до анімації
-    items.forEach(el => el.classList.add("mobile-fade-element"));
+    // Тексту додаємо висунення справа
+    texts.forEach(txt => txt.classList.add("mobile-slide-right"));
+
+    if (logo) logo.classList.add("mobile-slide-left");
 
     const observerOptions = {
       root: null,
@@ -205,15 +212,16 @@ if (!isMobile) {
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          // Використовуємо requestAnimationFrame для плавності запуску кадрів анімації
           window.requestAnimationFrame(() => {
             entry.target.classList.add("is-visible");
           });
-          observer.unobserve(entry.target); // Анімуємо лише один раз при появі
+          observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
 
-    items.forEach(item => observer.observe(item));
+    [...images, ...texts, logo].forEach(item => {
+      if (item) observer.observe(item);
+    });
   });
 }
