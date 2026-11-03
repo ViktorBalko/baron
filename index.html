@@ -5,6 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baron Limited Edition</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Чіткі захардкоджені стилі для анімацій та ефектів прямо тут */
+        .reveal-line {
+            overflow: hidden;
+            display: block;
+        }
+        .reveal-line span {
+            display: block;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .reveal-line.is-visible span {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-pair-left {
+                opacity: 0;
+                transform: translate3d(-100px, 0, 0);
+                transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+                will-change: opacity, transform;
+            }
+            .mobile-pair-right {
+                opacity: 0;
+                transform: translate3d(100px, 0, 0);
+                transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+                will-change: opacity, transform;
+            }
+            .mobile-pair-left.is-visible,
+            .mobile-pair-right.is-visible {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -26,61 +63,46 @@
                 <div class="container">
                     <main class="carousel">
                         
-                        <!-- Ліва колонка (на десктопі) -->
+                        <!-- Ліва колонка -->
                         <div class="carousel__left">
-                            <img class="carousel__image carousel__item" src="d1.jpg" alt="d1">
+                            <img class="carousel__image carousel__item mobile-pair-left" src="d1.jpg" alt="d1">
 
-                            <div class="carousel__text carousel__item">
-                                <h1 class="carousel__text-head">Case</h1>
+                            <div class="carousel__text carousel__item mobile-pair-right">
+                                <h1 class="carousel__text-head"><span class="reveal-line"><span>Case</span></span></h1>
                                 <p class="carousel__text-paragraph">
-                                    The case of any Monaco is one of the key elements that makes it such an iconic
-                                    and instantly recognisable watch. The 39mm steel case is finished with brushed
-                                    bezel and case sides while the lugs and bevels feature polished surfaces. The
-                                    faceted crystal that sits over the dial protrudes slightly above the case,
-                                    reminiscent of a thick piece of vintage crystal, just like it would have been
-                                    when first launched 52 years ago.
+                                    <span class="reveal-line"><span>The case of any Monaco is one of the key elements that makes it such an iconic and instantly recognisable watch. The 39mm steel case is finished with brushed bezel and case sides while the lugs and bevels feature polished surfaces.</span></span>
                                 </p>
                             </div>
 
-                            <img class="carousel__image carousel__item" src="d2.webp" alt="d2">
+                            <img class="carousel__image carousel__item mobile-pair-left" src="d2.webp" alt="d2">
 
-                            <div class="carousel__text carousel__item">
-                                <h1 class="carousel__text-head">Dial</h1>
+                            <div class="carousel__text carousel__item mobile-pair-right">
+                                <h1 class="carousel__text-head"><span class="reveal-line"><span>Dial</span></span></h1>
                                 <p class="carousel__text-paragraph">
-                                    This is where the real show is, with the dial offering a totally new and also
-                                    “trending” colour green. But as you’d expect from Baron, this isn’t a dull
-                                    or flat green tone. Far from it, the green is an engaging sunburst colour that
-                                    has a smoked effect which gradually shifts from apple green in the centre of the
-                                    dial to black around its circumference.
+                                    <span class="reveal-line"><span>This is where the real show is, with the dial offering a totally new and also “trending” colour green. But as you’d expect from Baron, this isn’t a dull or flat green tone.</span></span>
                                 </p>
                             </div>
 
-                            <img class="carousel__image carousel__item" src="d3.jpeg" alt="d3">
+                            <img class="carousel__image carousel__item mobile-pair-left" src="d3.jpeg" alt="d3">
                         </div>
 
-                        <!-- Права колонка (на десктопі) -->
+                        <!-- Права колонка -->
                         <div class="carousel__right">
-                            <div class="carousel__text carousel__item">
+                            <div class="carousel__text carousel__item mobile-pair-right">
                                 <h1 class="carousel__text-head">
-                                    HANDS-ON: Baron Limited Edition is a fumé fantasy
+                                    <span class="reveal-line"><span>HANDS-ON: Baron Limited Edition is a fumé fantasy</span></span>
                                 </h1>
                                 <p class="carousel__text-paragraph">
-                                    The watch is a classic in every sense of the word. I mean, Steve
-                                    McQueen famously wore it on the silver screen and if you’re looking for an
-                                    endorsement from the King of Cool, it doesn’t get much better than that.
+                                    <span class="reveal-line"><span>The watch is a classic in every sense of the word. I mean, Steve McQueen famously wore it on the silver screen and if you’re looking for an endorsement from the King of Cool, it doesn’t get much better than that.</span></span>
                                 </p>
                             </div>
 
-                            <img class="carousel__image carousel__item" src="d4.png" alt="d4">
+                            <img class="carousel__image carousel__item mobile-pair-left" src="d4.png" alt="d4">
 
-                            <div class="carousel__text carousel__item">
-                                <h1 class="carousel__text-head">Movement</h1>
+                            <div class="carousel__text carousel__item mobile-pair-right">
+                                <h1 class="carousel__text-head"><span class="reveal-line"><span>Movement</span></span></h1>
                                 <p class="carousel__text-paragraph">
-                                    Powering this edition is the go-to-choice for the
-                                    watchmaker – the Calibre Automatic. It’s the
-                                    same caliber as what you will find across much of the collection,
-                                    beating at 28,800vph and delivering a full 80 hours of power
-                                    reserve.
+                                    <span class="reveal-line"><span>Powering this edition is the go-to-choice for the watchmaker – the Calibre Automatic. It’s the same caliber as what you will find across much of the collection, beating at 28,800vph.</span></span>
                                 </p>
                             </div>
                         </div>
@@ -90,17 +112,37 @@
             </div>
 
             <!-- Логотип внизу -->
-            <img class="img__logo" src="22.png" alt="creative-logo">
+            <img class="img__logo mobile-pair-left" src="22.png" alt="creative-logo">
 
         </div>
     </div>
 
-    <!-- GSAP скрипти з кореня проєкту -->
+    <!-- Захардкоджений мобільний обробник появи (працює виключно за скролом) -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (window.innerWidth <= 768) {
+                const observerOptions = { root: null, rootMargin: "0px 0px -5% 0px", threshold: 0.1 };
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("is-visible");
+                            entry.target.querySelectorAll(".reveal-line").forEach(l => l.classList.add("is-visible"));
+                        } else {
+                            entry.target.classList.remove("is-visible");
+                            entry.target.querySelectorAll(".reveal-line").forEach(l => l.classList.remove("is-visible"));
+                        }
+                    });
+                }, observerOptions);
+
+                document.querySelectorAll(".carousel__item, .img__logo").forEach(item => observer.observe(item));
+            }
+        });
+    </script>
+
+    <!-- GSAP скрипти з кореня -->
     <script src="gsap.min.js"></script>
     <script src="ScrollTrigger.min.js"></script>
     <script src="ScrollSmoother.min.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
-
-
