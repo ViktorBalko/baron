@@ -85,7 +85,6 @@ body {
   border-radius: 1em;
 }
 
-/* Квадратний формат тільки для портретних фотографій */
 .carousel__image {
   width: 100%;
   aspect-ratio: 1 / 1;
@@ -125,7 +124,7 @@ body {
 }
 
 /* ========================================== */
-/* МОБІЛЬНІ (ДО 768px): ОДНА КОЛОНКА           */
+/* МОБІЛЬНІ (ДО 768px): ОДНА КОЛОНКА ПІРАМІДКИ  */
 /* ========================================== */
 @media (max-width: 768px) {
   html, body {
@@ -235,26 +234,5 @@ body {
     width: 70vw;
     max-width: 300px;
     margin: 60px auto;
-  }
-
-  /* Шахматне висунення для мобільних пристроїв */
-  .mobile-pair-left {
-    opacity: 0;
-    transform: translate3d(-100px, 0, 0);
-    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-    will-change: opacity, transform;
-  }
-
-  .mobile-pair-right {
-    opacity: 0;
-    transform: translate3d(100px, 0, 0);
-    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-    will-change: opacity, transform;
-  }
-
-  .mobile-pair-left.is-visible,
-  .mobile-pair-right.is-visible {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
   }
 }
