@@ -68,7 +68,7 @@ body {
 
 .carousel {
   display: flex;
-  padding: calc(var(--index) * 4) 0;
+  padding: calc(var(--index) * 2) 0;
   background-color: #000000;
 }
 
@@ -78,11 +78,14 @@ body {
   flex-direction: column;
 }
 
+/* Квадратні блоки на десктопі без рамки і фону */
 .carousel__text,
 .carousel__image {
   max-width: calc(var(--index) * 22);
   margin-bottom: var(--carousel-gap);
-  border-radius: 1em;
+  border-radius: 0;
+  background: transparent !important;
+  border: none !important;
 }
 
 .carousel__image {
@@ -92,9 +95,12 @@ body {
 }
 
 .carousel__text {
+  width: 100%;
+  aspect-ratio: 1 / 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 0;
 }
 
 .carousel__text-head {
@@ -112,7 +118,7 @@ body {
 }
 
 .carousel__left {
-  margin-top: calc(var(--index) * 13);
+  margin-top: calc(var(--index) * 10);
 }
 
 .img__logo {
@@ -124,7 +130,7 @@ body {
 }
 
 /* ========================================== */
-/* МОБІЛЬНІ (ДО 768px): ОДНА КОЛОНКА ПІРАМІДКИ  */
+/* МОБІЛЬНІ (ДО 768px): ЧІТКІ ПАРИ (ОДИН СТОВПЧИК) */
 /* ========================================== */
 @media (max-width: 768px) {
   html, body {
@@ -178,11 +184,16 @@ body {
     height: auto !important;
   }
 
+  /* Перетворюємо каруселі на єдиний лінійний потік блоків на мобільному */
+  .portfolio, .portfolio-second {
+    display: contents;
+  }
+
   .carousel {
     display: flex !important;
     flex-direction: column !important;
-    padding: 30px 0 !important;
-    gap: 30px !important;
+    padding: 0 !important;
+    gap: 0 !important;
     background-color: #000000 !important;
   }
 
@@ -191,20 +202,28 @@ body {
     display: contents !important;
   }
 
+  /* Жорсткий порядок пар на телефоні: Фото1 -> Текст1 -> Текст2 -> Фото2 -> Фото3 -> Текст3 -> Текст4 -> Фото4 */
+  .pair-1-img { order: 1; }
+  .pair-1-txt { order: 2; }
+  .pair-2-img { order: 3; }
+  .pair-2-txt { order: 4; }
+  .pair-3-img { order: 5; }
+  .pair-3-txt { order: 6; }
+  .pair-4-img { order: 7; }
+  .pair-4-txt { order: 8; }
+
   .carousel__text,
   .carousel__image {
     max-width: 100% !important;
     width: 100% !important;
-    margin: 0 0 30px 0 !important;
+    aspect-ratio: 1 / 1 !important;
+    margin: 0 0 40px 0 !important;
     border-radius: 0 !important;
     background: transparent !important;
     border: none !important;
-    box-shadow: none !important;
   }
 
   .carousel__image {
-    width: 100% !important;
-    aspect-ratio: 1 / 1 !important;
     display: block;
     object-fit: cover;
   }
@@ -226,13 +245,10 @@ body {
     color: #b0b0b0 !important;
   }
 
-  .carousel__left {
-    margin-top: 0 !important;
-  }
-
   .img__logo {
     width: 70vw;
     max-width: 300px;
     margin: 60px auto;
+    order: 9;
   }
 }
