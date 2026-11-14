@@ -3,7 +3,7 @@ gsap.registerPlugin(ScrollTrigger);
 const isMobile = window.innerWidth <= 768 || /Mobi|Android|iPhone/i.test(navigator.userAgent);
 
 if (!isMobile) {
-  // ДЕСКТОП ТА ПЛАНШЕТ: Еталонний двоколонковий паралакс
+  // ДЕСКТОП ТА ПЛАНШЕТ: Еталонний двоколонковий паралакс із ScrollSmoother
   gsap.registerPlugin(ScrollSmoother);
   ScrollSmoother.create({
     wrapper: ".wrapper",
@@ -60,28 +60,43 @@ if (!isMobile) {
     );
   });
 } else {
-  // МОБІЛЬНИЙ РУШІЙ (< 768px): Шахматні пари з боків
-  document.addEventListener("DOMContentLoaded", () => {
-    const observerOptions = {
-      root: null,
-      rootMargin: "0px 0px -5% 0px",
-      threshold: 0.1
-    };
+  // МОБІЛЬНИЙ РУШІЙ (< 768px): Плавний потік під пальцем (scrub) із правильним порядком пар
+  const allItems = gsap.utils.toArray(".carousel__item");
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        window.requestAnimationFrame(() => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-          } else {
-            entry.target.classList.remove("is-visible");
-          }
-        });
-      });
-    }, observerOptions);
+  allItems.forEach((item, index) => {
+    const xDirection = index % 2 === 0 ? -70 : 70; // Шахматний виїзд зліва/справа
 
-    document.querySelectorAll(".carousel__item, .img__logo").forEach(item => {
-      if (item) observer.observe(item);
-    });
+    gsap.fromTo(
+      item,
+      { opacity: 0, x: xDirection },
+      {
+        opacity: 1,
+        x: 0,
+        scrollTrigger: {
+          trigger: item,
+          start: "top 90%",
+          end: "top 45%",
+          scrub: 0.5 // Повна прив'язка до скролу пальця
+        }
+      }
+    );
   });
+
+  const logo = document.querySelector(".img__logo");
+  if (logo) {
+    gsap.fromTo(
+      logo,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        scrollTrigger: {
+          trigger: logo,
+          start: "top 95%",
+          end: "top 60%",
+          scrub: 0.5
+        }
+      }
+    );
+  }
 }
